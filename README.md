@@ -11,6 +11,7 @@ Je kan steeds je toekomstige sportactiviteiten inplannen voor de volgende week. 
 * Intensiteit/niveau van je sportsessie
 * Eventueel met wie je gaat sporten
 * Hoeveel calorieën je zou willen verbranden.
+
 Aan de hand van de duratie van je sportsessie en de intensiteit ervan, zal je ook een melding krijgen hoeveel liter water er aangeraden wordt om te drinken.
 
 Als extra kan je ook aangeven hoeveel uur je minimaal wil sporten per week. De app helpt je dan om bij te houden hoeveel uren je al gesport hebt deze week en hoeveel uren je nog moet inplannen.
@@ -21,6 +22,7 @@ Online applicatie
 Design
 ------
 Moodboard en inspiratie: [https://www.pinterest.com/liencardoen/plan-it-dev3/]
+
 Wireframes en design: [https://www.figma.com/file/M2K2oyJoIPG7KYe4hJ5yMj/Screendesign-mobile?node-id=0%3A1]
 
 Project vereisten
