@@ -1,4 +1,9 @@
-import './style.css';
-import {devineLog} from './js/utility/helpers';
+require('./style.css');
+{
 
-devineLog('Hey, ik ben een JS file');
+  const init = () => {
+
+  };
+
+  init();
+}
