@@ -1,0 +1,39 @@
+.sporthours {
+  margin: 2rem 3rem;
+  background-color: white;
+  box-shadow: 0rem .2rem 1rem rgba(0, 0, 0, .15);
+  border-radius: .7rem;
+  padding: 2rem 1.5rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  grid-gap: 1rem;
+
+  margin-top: -4.5rem;
+}
+
+.hours__amount {
+  font-size: 4.4rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.hours--orange {
+  color: var(--orangeColor);
+}
+
+.hours--green {
+  color: var(--greenColor);
+}
+
+.hours--small {
+  font-size: 2.6rem;
+  font-weight: 300;
+}
+
+.hours__subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}

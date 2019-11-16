@@ -1,6 +1,9 @@
 @import './css/reset.css';
 @import './css/vars.css';
-
+@import './css/header.css';
+@import './css/navigation.css';
+@import './css/activities.css';
+@import './css/hours.css';
 
 html {
   box-sizing: border-box;
@@ -16,3 +19,20 @@ html {
 }
 /* stylelint-enable*/
 
+body {
+  background-color: var(--lightPurpleColor);
+  font-size: 1.8rem;
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (min-width: 828px) {
+
+  .header {
+    background-color: red;
+  }
+}

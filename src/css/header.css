@@ -1,0 +1,17 @@
+.header {
+  background-color: var(--purpleColor);
+  padding: 4rem 3rem;
+  padding-top: 4rem;
+  height: 16rem;
+}
+
+.header__title {
+  font-size: 2.6rem;
+  line-height: 100%;
+  color: white;
+}
+
+.header__title--small {
+  font-weight: 300;
+  font-size: 1.8rem;
+}

@@ -1,4 +1,10 @@
 :root {
-  --mainColor: black;
+  --purpleColor: #4546a3;
+  --darkPurpleColor: #212256;
+  --lightPurpleColor: #ecedf6;
+  --orangeColor: #ff7f56;
+  --lightOrangeColor: #ffece7;
+  --greenColor: #6ac7be;
+  --lightGreenColor: #e9f7f4;
   --margin: 3rem;
 }

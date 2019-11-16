@@ -1,0 +1,65 @@
+.activities {
+  margin: 2rem 3rem;
+}
+
+.activities__day {
+  font-weight: 600;
+  color: var(--darkPurpleColor);
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.activity {
+  background-color: white;
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 1.7rem;
+
+  box-shadow: 0rem .2rem 1rem rgba(0, 0, 0, .15);
+  border-radius: .7rem;
+
+  background-image: url(../assets/img/arrow.svg);
+  background-repeat: no-repeat;
+  background-position: 98% 90%;
+}
+
+.activity__button {
+  display: flex;
+  align-items: center;
+}
+
+.activity__button__wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.6rem;
+}
+
+.activity__button__time {
+  color: #e0e0e0;
+  font-size: 1rem;
+}
+
+.activity__button__name {
+  color: var(--darkPurpleColor);
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-top: .5rem;
+}
+
+.add__activity {
+  background-color: var(--greenColor);
+  color: white;
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  bottom: 6.8rem;
+  right: 2.4rem;
+}
