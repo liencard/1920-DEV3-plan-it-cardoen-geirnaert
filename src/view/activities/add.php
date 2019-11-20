@@ -81,13 +81,50 @@
         <label class="add-activity__option add-activity__option--date">
           <input type="radio" name="day" value="" checked>
           <div class="add-activity__option__container">
-            <p>typeeeee</p>
+            <p class="date--large">18</>
+            <p>mon</p>
+          </div>
+        </label>
+        <label class="add-activity__option add-activity__option--date">
+          <input type="radio" name="day" value="" checked>
+          <div class="add-activity__option__container">
+            <p class="date--large">18</>
+            <p>mon</p>
+          </div>
+        </label>
+        <label class="add-activity__option add-activity__option--date">
+          <input type="radio" name="day" value="" checked>
+          <div class="add-activity__option__container">
+            <p class="date--large">18</>
+            <p>mon</p>
+          </div>
+        </label>
+        <label class="add-activity__option add-activity__option--date">
+          <input type="radio" name="day" value="" checked>
+          <div class="add-activity__option__container">
+            <p class="date--large">18</>
+            <p>mon</p>
           </div>
         </label>
         <label class="add-activity__option add-activity__option--date">
           <input type="radio" name="day" value="">
           <div class="add-activity__option__container">
-            <p>typeeeee</p>
+            <p class="date--large">19</p>
+            <p>tue</p>
+          </div>
+        </label>
+          <label class="add-activity__option add-activity__option--date">
+          <input type="radio" name="day" value="" checked>
+          <div class="add-activity__option__container">
+            <p class="date--large">18</>
+            <p>mon</p>
+          </div>
+        </label>
+        <label class="add-activity__option add-activity__option--date">
+          <input type="radio" name="day" value="" checked>
+          <div class="add-activity__option__container">
+            <p class="date--large">18</>
+            <p>mon</p>
           </div>
         </label>
       </div>

@@ -56,8 +56,13 @@
 }
 
 .add-activity__option.add-activity__option--date .add-activity__option__container {
-  height: 9rem;
-  width: 6rem;
+  height: 10rem;
+  width: 7rem;
+}
+
+.add-activity__option.add-activity__option--date .date--large {
+  font-size: 2.3rem;
+  padding-bottom: 0;
 }
 
 .add-activity__option.add-activity__option--location .add-activity__option__container {
