@@ -1,4 +1,5 @@
 :root {
+  /* colors */
   --purpleColor: #4546a3;
   --darkPurpleColor: #212256;
   --lightPurpleColor: #ecedf6;
@@ -6,5 +7,12 @@
   --lightOrangeColor: #ffece7;
   --greenColor: #6ac7be;
   --lightGreenColor: #e9f7f4;
-  --margin: 3rem;
+  --whiteColor: white;
+  --shadowColor: rgba(95, 64, 225, .09);
+  --backgroundColor: #f9fafe;
+  /* margins */
+  --smallMargin: 3rem;
+  --mediumMargin: 4rem;
+  /* borders */
+  --borderRadius: .7rem;
 }
