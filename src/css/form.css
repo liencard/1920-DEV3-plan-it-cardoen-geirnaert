@@ -14,7 +14,7 @@
 }
 
 .add-activity__options-container {
-  align-items: center;
+  align-items: baseline;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -44,6 +44,7 @@
 
 .add-activity__option .add-activity__option__container > p {
   color: var(--purpleColor);
+  font-size: 1.4rem;
   font-weight: 600;
   padding: 1rem .5rem;
   text-transform: uppercase;
@@ -59,12 +60,21 @@
   width: 6rem;
 }
 
+.add-activity__option.add-activity__option--location .add-activity__option__container {
+  height: 13.5rem;
+  width: 8.5rem;
+}
+
 .add-activity__option.add-activity__option--intensity .add-activity__option__container {
   background-color: transparent;
   border: none;
   box-shadow: none;
   height: auto;
   width: auto;
+}
+
+.add-activity__option.add-activity__option--intensity .add-activity__option__container > p {
+  color: var(--lightPurpleColor);
 }
 
 .add-activity__option.add-activity__option--focus .add-activity__option__container {
@@ -94,4 +104,16 @@
 
 .add-activity__option [type=checkbox]:checked ~ .add-activity__option__container > svg > path {
   fill: white;
+}
+
+.add-activity__option.add-activity__option--intensity [type=radio]:checked ~ .add-activity__option__container {
+  background-color: transparent;
+}
+
+.add-activity__option.add-activity__option--intensity [type=radio]:checked ~ .add-activity__option__container > p {
+  color: var(--purpleColor);
+}
+
+.add-activity__option.add-activity__option--intensity [type=radio]:checked ~ .add-activity__option__container > svg > path {
+  fill: var(--purpleColor);
 }
