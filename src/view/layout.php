@@ -28,7 +28,7 @@
   </nav>
 
 
-    <main>
+    <main class="layout">
       <?php
         if(!empty($_SESSION['error'])) {
           echo '<div class="error box">' . $_SESSION['error'] . '</div>';

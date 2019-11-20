@@ -15,6 +15,10 @@ class ActivitiesController extends Controller {
     $this->set('title', 'Home');
   }
 
+  public function detail() {
+    $this->set('title', 'Edit activity');
+  }
+
   public function add() {
     $this->set('title', 'Add activity');
   }

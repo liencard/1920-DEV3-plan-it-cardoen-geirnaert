@@ -11,6 +11,10 @@ $routes = array(
   'add-activity' => array(
     'controller' => 'Activities',
     'action' => 'add'
+  ),
+  'detail' => array(
+    'controller' => 'Activities',
+    'action' => 'detail'
   )
 );
 
