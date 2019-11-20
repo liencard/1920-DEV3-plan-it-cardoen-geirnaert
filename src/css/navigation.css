@@ -17,3 +17,10 @@
   align-items: flex-end;
   align-items: center;
 }
+
+@media screen and (min-width: 650px) {
+
+  .nav {
+    display: none;
+  }
+}

@@ -2,6 +2,13 @@
   margin: 2rem 3rem;
 }
 
+.activities__title {
+  font-weight: 700;
+  color: var(--darkPurpleColor);
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
 .activities__day {
   font-weight: 600;
   color: var(--darkPurpleColor);
@@ -14,7 +21,7 @@
   padding: 1.1rem 1.4rem;
   margin-bottom: 1.7rem;
 
-  box-shadow: 0rem .2rem 1rem rgba(0, 0, 0, .15);
+  box-shadow: 0 .2rem 1rem rgba(0, 0, 0, .15);
   border-radius: .7rem;
 
   background-image: url(../assets/img/arrow.svg);
@@ -25,6 +32,7 @@
 .activity__button {
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .activity__button__wrapper {
@@ -34,7 +42,7 @@
 }
 
 .activity__button__time {
-  color: #e0e0e0;
+  color: #828282;
   font-size: 1rem;
 }
 
@@ -59,7 +67,52 @@
   justify-content: center;
   align-items: center;
 
-  position: absolute;
+  position: fixed;
   bottom: 6.8rem;
   right: 2.4rem;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 650px) {
+
+  .activities {
+    margin: 0 auto;
+    margin-top: 10.5rem;
+    min-width: 35rem;
+  }
+
+  .activities__title {
+    font-size: 2.4rem;
+    margin-bottom: 7rem;
+  }
+
+  .activities__day {
+    font-size: 1.8rem;
+    margin-bottom: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 850px) {
+
+  .activities {
+    width: 60vw;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+
+  .activities__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 3rem;
+  }
+
+  .activities {
+    min-width: 65rem;
+  }
+
+  .activities__title {
+    font-size: 3.6rem;
+  }
+
 }

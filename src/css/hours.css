@@ -1,39 +1,92 @@
-.sporthours {
+.hours {
+  display: flex;
+  justify-content: space-between;
+
   margin: 2rem 3rem;
-  background-color: white;
-  box-shadow: 0 .2rem 1rem rgba(0, 0, 0, .15);
-  border-radius: .7rem;
-  padding: 2rem 1.5rem;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  align-items: center;
-  grid-gap: 1rem;
-
   margin-top: -4.5rem;
 }
 
-.hours__amount {
-  font-size: 4.4rem;
-  font-weight: 700;
-  text-align: right;
+.hours__wrapper {
+  box-shadow: 0 .2rem 1rem rgba(0, 0, 0, .15);
+  border-radius: .7rem;
+  padding: 1.5rem;
+  width: 14.5rem;
 }
 
-.hours--orange {
+.hours__wrapper--done {
+  background-color: var(--orangeColor);
+  color: white;
+  margin-right: 2rem;
+}
+
+.hours__wrapper--todo {
+  background-color: white;
   color: var(--orangeColor);
 }
 
-.hours--green {
-  color: var(--greenColor);
-}
+.hours__amount {
+  display: flex;
+  flex-direction: column;
 
-.hours--small {
-  font-size: 2.6rem;
-  font-weight: 300;
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
 .hours__subtitle {
+  display: flex;
+  flex-direction: column;
+
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
+  padding-bottom: 2.8rem; /* luistert niet */
+
+}
+
+@media screen and (min-width: 450px) {
+
+  .hours {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 650px) {
+
+  .hours {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8rem; /* overschrijven van neg margin */
+  }
+
+  .hours__wrapper--done {
+    margin-bottom: 3.5rem;
+  }
+
+  .hours__wrapper {
+    width: 23rem; /* getal klopt niet, zo 26 moeten zijn??? */
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 2rem;
+  }
+
+  .hours__amount {
+    font-size: 3.5rem;
+    flex-direction: row;
+  }
+
+  .hours__amount span:first-child {
+    padding-right: 1rem;
+  }
+
+  .hours__subtitle {
+    font-size: 1.4rem;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+
+  .hours__wrapper {
+    width: 31.5rem; /* getal klopt niet */
+  }
 }

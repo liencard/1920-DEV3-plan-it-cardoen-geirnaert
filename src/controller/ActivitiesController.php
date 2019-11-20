@@ -17,6 +17,10 @@ class ActivitiesController extends Controller {
     $this->set('title', 'Home');
   }
 
+  public function detail() {
+    $this->set('title', 'Edit activity');
+  }
+
   public function add() {
     $types = $this->activityDAO->selectAllTypes();
     $sports = $this->activityDAO->selectAllSportsByType(2);

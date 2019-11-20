@@ -3,6 +3,7 @@
 @import './css/header.css';
 @import './css/navigation.css';
 @import './css/activities.css';
+@import './css/detail.css';
 @import './css/hours.css';
 @import './css/form.css';
 
@@ -31,9 +32,10 @@ body {
   display: none;
 }
 
-@media screen and (min-width: 828px) {
+@media screen and (min-width: 650px) {
 
-  .header {
-    background-color: red;
+  .layout {
+    display: flex;
   }
+
 }
