@@ -22,7 +22,7 @@
   margin-bottom: 1.7rem;
 
   box-shadow: 0 .2rem 1rem rgba(0, 0, 0, .15);
-  border-radius: .7rem;
+  border-radius: var(--borderRadius);
 
   background-image: url(../assets/img/arrow.svg);
   background-repeat: no-repeat;

@@ -113,21 +113,18 @@
       <span class="add-activity__label">What time will you start?</span>
       <div class="add-activity__options-container">
         <label class="add-activity__option add-activity__option--time">
-          <input type="time" name="day" value="">
+          <input type="time" name="day" class="input-time" value="13:30">
         </label>
       </div>
     </div>
 
     <div class="add-activity__form-item add-activity__form-item__duration">
       <span class="add-activity__label">How long will you sport?</span>
-
       <div class="add-activity__options-container add-activity__option--duration">
-
         <div class="duration-slider">
-          <span id="ds-bullet" class="ds-label">0</span>
+          <span class="ds-label">0</span>
           <input type="range" name="duration"  min="0" max="12" value="0" class="ds-range" id="durationTime">
         </div>
-
         <div class="duration-minmax">
           <span>0h</span>
           <span>0,5h</span>

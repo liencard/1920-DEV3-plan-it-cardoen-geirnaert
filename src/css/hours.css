@@ -8,7 +8,7 @@
 
 .hours__wrapper {
   box-shadow: 0 .2rem 1rem rgba(0, 0, 0, .15);
-  border-radius: .7rem;
+  border-radius: var(--borderRadius);
   padding: 1.5rem;
   width: 14.5rem;
 }

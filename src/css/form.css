@@ -135,3 +135,36 @@
 .add-activity__option.add-activity__option--intensity [type=radio]:checked ~ .add-activity__option__container > svg > path {
   fill: var(--purpleColor);
 }
+
+.input-time {
+  border: none;
+  color: var(--purpleColor);
+  font-size: 2.5rem;
+  width: 10rem;
+  background-color: transparent;
+  outline: lightgray;
+  border-bottom: .2rem solid var(--purpleColor);
+}
+
+.input-time::-webkit-datetime-edit-fields-wrapper {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-time::-webkit-datetime-edit-text {
+  padding: 2rem .4rem;
+}
+
+.input-time::-webkit-clear-button, .input-time::-webkit-inner-spin-button {
+  display: none;
+}
+
+.input-time::-webkit-datetime-edit-hour-field, .input-time::-webkit-datetime-edit-minute-field {
+  padding: 1rem;
+
+  &:focus {
+    color: var(--orangeColor);
+  }
+}

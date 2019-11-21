@@ -11,7 +11,7 @@ require('./style.css');
       const bulletPosition = (this.value / $rangeSlider.max);
       $rangeBullet.style.left = (bulletPosition * 58) + 'rem';
       console.log(bulletPosition);
-    }
+    };
 
   };
 
