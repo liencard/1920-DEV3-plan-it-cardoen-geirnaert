@@ -13,7 +13,7 @@ class ActivitiesController extends Controller {
 
   public function index() {
     $locations = $this->activityDAO->selectAllLocations();
-    var_dump($locations);
+    // var_dump($locations);
     $this->set('title', 'Home');
   }
 
@@ -24,7 +24,7 @@ class ActivitiesController extends Controller {
   public function add() {
     $types = $this->activityDAO->selectAllTypes();
     $sports = $this->activityDAO->selectAllSportsByType(2);
-    var_dump($sports);
+    // var_dump($sports);
     $this->set('title', 'Add activity');
     $this->set('types', $types);
 

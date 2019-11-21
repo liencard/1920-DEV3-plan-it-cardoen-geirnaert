@@ -6,6 +6,7 @@
 @import './css/detail.css';
 @import './css/hours.css';
 @import './css/form.css';
+@import './css/slider.css';
 
 html {
   box-sizing: border-box;

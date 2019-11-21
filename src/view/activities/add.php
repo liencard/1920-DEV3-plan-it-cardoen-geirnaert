@@ -1,3 +1,4 @@
+
 <section class="center">
   <form action="" method="POST" class="add-activity">
     <input type="hidden" name="action" value="updateShow">
@@ -119,10 +120,23 @@
 
     <div class="add-activity__form-item add-activity__form-item__duration">
       <span class="add-activity__label">How long will you sport?</span>
-      <div class="add-activity__options-container">
-        <label class="add-activity__option add-activity__option--duration">
-          <input type="range" name="duration" min="0" max="10">
-        </label>
+
+      <div class="add-activity__options-container add-activity__option--duration">
+
+        <div class="duration-slider">
+          <span id="ds-bullet" class="ds-label">0</span>
+          <input type="range" name="duration"  min="0" max="12" value="0" class="ds-range" id="durationTime">
+        </div>
+
+        <div class="duration-minmax">
+          <span>0h</span>
+          <span>0,5h</span>
+          <span>1h</span>
+          <span>1,5h</span>
+          <span>2h</span>
+          <span>2,5h</span>
+          <span>3h</span>
+        </div>
       </div>
     </div>
 

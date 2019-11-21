@@ -9,7 +9,7 @@
       <span class="hours__subtitle">Hours of sport done</span>
       <span class="hours__amount">
         <span>3h</span>
-        <span> 30mins</span>
+        <span>30mins</span>
       </span>
     </div>
 
@@ -17,7 +17,7 @@
       <span class="hours__subtitle">Hours left to plan</span>
       <span class="hours__amount">
         <span>6h</span>
-        <span> 30mins</span>
+        <span>30mins</span>
       </span>
     <div>
   </section>
