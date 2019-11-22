@@ -18,12 +18,12 @@ class ActivityDAO extends DAO {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public function selectAllSportsByType($type) {
-    $sql = "SELECT * FROM Sports WHERE type = :type";
-    $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':type', $type);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-  }
+  // public function selectAllSportsByType($type) {
+  //   $sql = "SELECT * FROM Sports WHERE type = :type";
+  //   $stmt = $this->pdo->prepare($sql);
+  //   $stmt->bindValue(':type', $type);
+  //   $stmt->execute();
+  //   return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  // }
 }
 

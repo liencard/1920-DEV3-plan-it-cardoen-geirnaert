@@ -10,23 +10,47 @@
   </head>
   <body>
 
-  <nav class="nav">
-    <ul class="menu">
-      <li class="menu__item menu__item--home menu__item--active">
-        <img srcset="./assets/img/home.svg 25w" sizes="25px" src="./assets/img/home.svg" alt="Home icon">
-      </li>
-      <li class="menu__item menu__item--about">
-        <img srcset="./assets/img/profile.svg 25w" sizes="25px" src="./assets/img/profile.svg" alt="Profile icon">
-      </li>
-      <li class="menu__item menu__item--admin">
-        <img srcset="./assets/img/profile.svg 25w" sizes="25px" src="./assets/img/profile.svg" alt="Profile icon">
-      </li>
-      <li class="menu__item menu__item--admin">
-        <img srcset="./assets/img/settings.svg 25w" sizes="25px" src="./assets/img/settings.svg" alt="Setting icon">
-      </li>
-    </ul>
-  </nav>
+    <div class="header__wrapper">
+      <header class="header">
+          <h1 class="header__title"> <span class="header__title--small">Hello,</span> <br> Lien</h1>
+      </header>
 
+      <nav class="nav">
+        <ul class="menu">
+          <li class="menu__item menu__item--home menu__item--active">
+            <img srcset="./assets/img/home.svg 25w" sizes="25px" src="./assets/img/home.svg" alt="Home icon">
+          </li>
+          <li class="menu__item menu__item--about">
+            <img srcset="./assets/img/profile.svg 25w" sizes="25px" src="./assets/img/profile.svg" alt="Profile icon">
+          </li>
+          <li class="menu__item menu__item--admin">
+            <img srcset="./assets/img/profile.svg 25w" sizes="25px" src="./assets/img/profile.svg" alt="Profile icon">
+          </li>
+          <li class="menu__item menu__item--admin">
+            <img srcset="./assets/img/settings.svg 25w" sizes="25px" src="./assets/img/settings.svg" alt="Setting icon">
+          </li>
+        </ul>
+      </nav>
+
+      <section class="hours">
+        <h2 class="hidden">Sport Hours</h2>
+        <div class="hours__wrapper hours__wrapper--done">
+          <span class="hours__subtitle">Hours of sport done</span>
+          <span class="hours__amount">
+            <span>3h</span>
+            <span>30mins</span>
+          </span>
+        </div>
+
+        <div class="hours__wrapper hours__wrapper--todo">
+          <span class="hours__subtitle">Hours left to plan</span>
+          <span class="hours__amount">
+            <span>6h</span>
+            <span>30mins</span>
+          </span>
+        <div>
+      </section>
+    </div>
 
     <main class="layout">
       <?php

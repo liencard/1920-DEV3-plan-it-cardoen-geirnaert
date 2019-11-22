@@ -1,28 +1,3 @@
-<div class="header__wrapper">
-  <header class="header">
-      <h1 class="header__title"> <span class="header__title--small">Hello,</span> <br> Angèle</h1>
-  </header>
-
-  <section class="hours">
-    <h2 class="hidden">Sport Hours</h2>
-    <div class="hours__wrapper hours__wrapper--done">
-      <span class="hours__subtitle">Hours of sport done</span>
-      <span class="hours__amount">
-        <span>3h</span>
-        <span>30mins</span>
-      </span>
-    </div>
-
-    <div class="hours__wrapper hours__wrapper--todo">
-      <span class="hours__subtitle">Hours left to plan</span>
-      <span class="hours__amount">
-        <span>6h</span>
-        <span>30mins</span>
-      </span>
-    <div>
-  </section>
-</div>
-
 <section class="activities">
   <h2 class="activities__title">Planned Tasks</h2>
 

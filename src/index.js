@@ -17,7 +17,9 @@ require('./style.css');
 
   const init = () => {
     const $rangeSlider = document.querySelector('.ds-range');
-    $rangeSlider.addEventListener('input', showSliderValue());
+    if ($rangeSlider) {
+      $rangeSlider.addEventListener('input', showSliderValue());
+    }
   };
 
   init();

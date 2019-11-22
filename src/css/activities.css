@@ -68,7 +68,7 @@
   align-items: center;
 
   position: fixed;
-  bottom: 6.8rem;
+  bottom: 7.8rem;
   right: 2.4rem;
   text-decoration: none;
 }
@@ -89,6 +89,10 @@
   .activities__day {
     font-size: 1.8rem;
     margin-bottom: 1.6rem;
+  }
+
+  .add__activity {
+    bottom: 2.4rem;
   }
 }
 

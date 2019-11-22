@@ -1,5 +1,10 @@
 .header__wrapper {
-  background-color: transparent; /* vreemde oplossing */
+  /* background-color: transparent; */
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
 }
 
 .header {

@@ -23,7 +23,7 @@ class ActivitiesController extends Controller {
 
   public function add() {
     $types = $this->activityDAO->selectAllTypes();
-    $sports = $this->activityDAO->selectAllSportsByType(2);
+    // $sports = $this->activityDAO->selectAllSportsByType(2);
     // var_dump($sports);
     $this->set('title', 'Add activity');
     $this->set('types', $types);
