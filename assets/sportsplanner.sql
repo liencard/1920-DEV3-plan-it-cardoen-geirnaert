@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 20, 2019 at 08:35 PM
+-- Generation Time: Nov 22, 2019 at 08:58 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.8
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `sportsplanner`
 --
-CREATE DATABASE IF NOT EXISTS `sportsplanner` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `sportsplanner`;
 
 -- --------------------------------------------------------
 
