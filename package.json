@@ -11,6 +11,7 @@
     "eslint": "^6.3.0",
     "eslint-config-devine": "^3.0.0",
     "file-loader": "^4.2.0",
+    "mamp-cli": "^0.0.10",
     "html-srcsets-loader": "^0.5.1",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
@@ -27,8 +28,13 @@
     "webpack-dev-server": "^3.8.0"
   },
   "scripts": {
-    "dev": "webpack-dev-server --mode development",
-    "prod": "rm -rf dist/ && webpack --mode production"
+    "dev": "yarn mamp-dev && webpack-dev-server --mode development",
+    "prod": "yarn clean && yarn copydist && webpack --mode production",
+    "copydist": "rsync -a --exclude=*.css --exclude=*.js ./src/ ./dist",
+    "clean": "rm -rf ./dist",
+    "mamp-dev": "./node_modules/.bin/mamp switch \"$(pwd)/src\"",
+    "mamp-prod": "./node_modules/.bin/mamp switch \"$(pwd)/dist\"",
+    "heroku-postbuild": "yarn prod"
   },
   "browserslist": [
     "last 2 versions",
