@@ -18,6 +18,7 @@ Als extra kan je ook aangeven hoeveel uur je minimaal wil sporten per week. De a
 
 Online applicatie
 ------
+https://dev3-sportsplanner.herokuapp.com/
 
 Design
 ------
