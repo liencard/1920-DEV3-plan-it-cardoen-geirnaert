@@ -19,7 +19,7 @@
       </div>
 
       <div class="details__img">
-        <img srcset="<?php echo $activity['icon-sport']; ?> 90w" sizes="90px" src="<?php echo $activity['icon-sport']; ?>" alt="Kickbox gloves icon">
+        <img srcset="<?php echo $activity['sport_icon']; ?> 90w" sizes="90px" src="<?php echo $activity['sport_icon']; ?>" alt="Kickbox gloves icon">
         <p><?php echo $activity['sport']; ?></p>
       </div>
     </div>

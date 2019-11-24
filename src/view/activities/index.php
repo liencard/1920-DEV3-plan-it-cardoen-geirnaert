@@ -7,8 +7,8 @@
       <ul class="activities__list">
         <?php foreach ($activities as $activity): ?>
         <li class="activity">
-          <a class="activity__button" href="index.php?page=detail&id=<?php echo $activity['id']; ?>">
-            <img srcset="<?php echo $activity['icon-sport']; ?> 60w" sizes="40px" src="<?php echo $activity['icon-sport']; ?>" alt="Kickbox gloves icon">
+          <a class="activity__button" href="index.php?page=detail&id=<?php echo $activity['activity_id']; ?>">
+            <img srcset="<?php echo $activity['sport_icon']; ?> 60w" sizes="40px" src="<?php echo $activity['sport_icon']; ?>" alt="Kickbox gloves icon">
             <span class="activity__button__wrapper">
               <span class="activity__button__time"><?php echo strftime("%H:%M", strtotime($activity['starthour'])); ?> - <?php echo strftime("%H:%M", strtotime($activity['endhour'])); ?></span>
               <span class="activity__button__name"><?php echo $activity['sport']; ?></span>
