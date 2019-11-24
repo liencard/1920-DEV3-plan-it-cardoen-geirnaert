@@ -1,5 +1,6 @@
 
 <section class="center">
+  <h2 class="form__title">Plan a new activity</p>
   <form action="" method="POST" class="add-activity">
     <input type="hidden" name="action" value="updateShow">
     <p class="error"><?php if(!empty($errors)) echo 'Some errors occured'; ?></p>
@@ -298,6 +299,9 @@
           </div>
         </label>
       </div>
+    </div>
+    <div class="form__button">
+      <a class="btn__detail btn__form" href="index.php">save</a>
     </div>
   </form>
 </section>
