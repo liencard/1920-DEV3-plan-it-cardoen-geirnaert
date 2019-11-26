@@ -48,7 +48,7 @@ class ActivityDAO extends DAO {
   }
 
   public function selectAllLocations() {
-    $sql = "SELECT * FROM Locations";
+    $sql = "SELECT * FROM `locations`";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -62,7 +62,14 @@ class ActivityDAO extends DAO {
   }
 
   public function selectAllTypes() {
-    $sql = "SELECT * FROM Types";
+    $sql = "SELECT * FROM `types`";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function selectAllSports() {
+    $sql = "SELECT * FROM `sports`";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -96,25 +103,25 @@ class ActivityDAO extends DAO {
   public function validateActivity($data){
     $errors = [];
     if (empty($data['sport_id'])) {
-      $errors['sport_id'] = '...';
+      $errors['sport_id'] = 'Please select a sport for your activity';
     }
     if (empty($data['date'])) {
-      $errors['date'] = '...';
+      $errors['date'] = 'Please select a date for your activity';
     }
     if (empty($data['starthour'])) {
-      $errors['starthour'] = '..';
+      $errors['starthour'] = 'Please select a starthour for your activity';
     }
     if (empty($data['endhour'])) {
-      $errors['endhour'] = '...';
+      $errors['endhour'] = 'Please select a endhour for your activity';
     }
     if (empty($data['location_id'])) {
-      $errors['location_id'] = '...';
+      $errors['location_id'] = 'Please select a location for your activity';
     }
     if (empty($data['intensity'])) {
-      $errors['intensity'] = '...';
+      $errors['intensity'] = 'Please select an intensity for your activity';
     }
     if (empty($data['timestamp'])) {
-      $errors['timestamp'] = '...';
+      $errors['timestamp'] = 'Timestamp';
     }
 
     return $errors;
