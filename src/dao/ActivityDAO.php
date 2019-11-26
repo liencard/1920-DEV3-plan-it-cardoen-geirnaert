@@ -77,7 +77,7 @@ class ActivityDAO extends DAO {
   // }
 
   public function insertActivity($data){
-    $errors = $this->validateActivity( $data );
+    $errors = $this->validateActivity($data);
     if (empty($errors)) {
       $sql = "INSERT INTO `activities` (`sport_id`, `date`, `starthour`, `endhour`, `location_id`, `intensity`, `timestamp`) VALUES (:sport_id, :date, :starthour, :endhour, :location_id, :intensity, :timestamp)";
       $stmt = $this->pdo->prepare($sql);

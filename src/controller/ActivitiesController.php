@@ -30,6 +30,13 @@ class ActivitiesController extends Controller {
       exit();
     }
 
+    if (!empty($_GET['action'])) {
+      if ($_GET['action'] == 'delete_activity') {
+        $this->activityDAO->delete($_GET['id']);
+        header('Location:index.php');
+      }
+    }
+
     $this->set('activity',$activity);
     $this->set('focuses',$focuses);
     $this->set('friends',$friends);
@@ -70,6 +77,7 @@ class ActivitiesController extends Controller {
     if (!empty($_GET['action'])) {
       if ($_GET['action'] == 'delete_activity') {
         $activityDAO->delete($_GET['id']);
+        header('Location:index.php');
       }
     }
 
