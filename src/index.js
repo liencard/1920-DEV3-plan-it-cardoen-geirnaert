@@ -10,7 +10,7 @@ require('./style.css');
       $rangeBullet.innerHTML = this.value / 4;
 
       const bulletPosition = (this.value / $rangeSlider.max);
-      $rangeBullet.style.left = `${bulletPosition * 58  }rem`;
+      $rangeBullet.style.left = `${bulletPosition * 57  }rem`;
       console.log(bulletPosition);
     };
 

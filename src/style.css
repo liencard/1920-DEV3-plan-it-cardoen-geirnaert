@@ -35,8 +35,11 @@ body {
 
 .layout {
   background-color: var(--backgroundColor);
-  margin-top: 25rem;
+  margin-top: 18rem;
+  min-height: 100vh;
+  padding: 5rem 0;
 }
+
 
 @media screen and (min-width: 650px) {
 
