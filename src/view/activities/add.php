@@ -1,4 +1,9 @@
 <section class="form">
+
+  <div class="detail__back">
+    <a class="" href="index.php">Back to overview</a>
+  </div>
+
   <h2 class="form__title">Plan a new activity</h2>
   <form action="index.php?page=add-activity" method="POST" class="add-activity">
     <input type="hidden" name="action" value="newActivity">
