@@ -48,7 +48,7 @@
 
     <div class="details__buttons">
       <a class="btn__detail btn__edit" href="index.php?page=add-activity">edit</a>
-      <a class="btn__detail btn__delete" href="index.php?page=detail&id=<?php echo $activity['activity_id']; ?>&action=delete_activity">delete</a>
+      <a class="btn__detail btn__delete" href="index.php?page=detail&id=<?php echo $activity['activity_id']; ?>&action=deleteActivity">delete</a>
     </div>
   </section>
 

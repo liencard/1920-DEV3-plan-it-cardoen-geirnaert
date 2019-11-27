@@ -30,7 +30,7 @@ class ActivitiesController extends Controller {
     }
 
     if (!empty($_GET['action'])) {
-      if ($_GET['action'] == 'delete_activity') {
+      if ($_GET['action'] == 'deleteActivity') {
         $this->activityDAO->delete($_GET['id']);
         header('Location:index.php');
       }
