@@ -23,7 +23,7 @@ html {
 /* stylelint-enable*/
 
 body {
-  background-color: var(--backgroundColor);
+  background-color: var(--purpleColor);
   font-size: 1.8rem;
   font-family: 'Open Sans', sans-serif;
   height: 100%;
@@ -34,14 +34,21 @@ body {
 }
 
 .layout {
-  margin-top: 25rem;
+  background-color: var(--backgroundColor);
+  margin-top: 18rem;
+  min-height: 100vh;
+  padding: 5rem 0;
 }
+
 
 @media screen and (min-width: 650px) {
 
   .layout {
+    border-radius: var(--layoutBorderRadius) 0 0 var(--layoutBorderRadius);
     display: flex;
+    height: 100vh;
     margin: 0 0 0 25rem;
+    overflow-y: scroll;
   }
 
 }
