@@ -2,7 +2,8 @@
   /* colors */
   --purpleColor: #4546a3;
   --darkPurpleColor: #212256;
-  --lightPurpleColor: #ecedf6;
+  /* --lightPurpleColor: #ecedf6; */
+  --lightPurpleColor: #c5cadc;
   --orangeColor: #ff7f56;
   --lightOrangeColor: #ffece7;
   --greenColor: #6ac7be;
@@ -15,4 +16,5 @@
   --mediumMargin: 4rem;
   /* borders */
   --borderRadius: .7rem;
+  --layoutBorderRadius: 3rem;
 }

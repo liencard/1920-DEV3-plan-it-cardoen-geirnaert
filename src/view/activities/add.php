@@ -1,5 +1,4 @@
-
-<section class="center">
+<section class="form">
   <h2 class="form__title">Plan a new activity</h2>
   <form action="index.php?page=add-activity" method="POST" class="add-activity">
     <input type="hidden" name="action" value="newActivity">
@@ -111,60 +110,18 @@
     <div class="add-activity__form-item add-activity__form-item__intensity">
       <h3 class="add-activity__label">What will be the intensity of your sport?</h3>
       <div class="add-activity__options-container">
-        <label class="add-activity__option add-activity__option--intensity">
+        <label class="add-activity__option add-activity__option--intensity add-activity__option--intensity--light">
           <input type="radio" name="intensity" value="light">
-          <div class="add-activity__option__container">
-            <svg width="41" height="22" viewBox="0 0 41 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0)">
-              <path d="M37.4 1H33.8C32.7 1 31.8 1.9 31.8 3V6.4C31.8 7.1 31.2 7.8 30.4 7.8H9.9C9.2 7.8 8.5 7.2 8.5 6.4V3C8.5 1.9 7.6 1 6.5 1H3C1.9 1 1 1.9 1 3V18.1C1 19.2 1.9 20.1 3 20.1H6.6C7.7 20.1 8.6 19.2 8.6 18.1V14.7C8.6 14 9.2 13.3 10 13.3H30.6C31.3 13.3 32 13.9 32 14.7V18.1C32 19.2 32.9 20.1 34 20.1H37.6C38.7 20.1 39.6 19.2 39.6 18.1V3C39.4 1.9 38.5 1 37.4 1Z" stroke="#ECEDF6" stroke-width="2" stroke-miterlimit="10"/>
-              </g>
-              <defs>
-              <clipPath id="clip0">
-              <rect width="40.4" height="21.1" fill="white"/>
-              </clipPath>
-              </defs>
-            </svg>
-            <p>light</p>
-          </div>
+            <!-- <div class="add-activity__option__container"> -->
+              <p>light</p>
+            <!-- </div> -->
         </label>
-        <label class="add-activity__option add-activity__option--intensity">
+        <label class="add-activity__option add-activity__option--intensity add-activity__option--intensity--medium">
           <input type="radio" name="intensity" value="medium" checked>
-          <div class="add-activity__option__container">
-            <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0)">
-              <path d="M20.5 33.2949C22.7955 33.2949 24.6563 31.4276 24.6563 29.1242C24.6563 26.8208 22.7955 24.9535 20.5 24.9535C18.2045 24.9535 16.3436 26.8208 16.3436 29.1242C16.3436 31.4276 18.2045 33.2949 20.5 33.2949Z" stroke="#4546A3" stroke-width="2" stroke-miterlimit="10"/>
-              <path d="M38.3231 31.881C38.3231 21.631 29.7286 13.3604 19.3729 13.9966C10.7079 14.5621 3.52237 21.419 2.74746 30.1138C2.46567 32.9414 2.88835 35.6276 3.73371 38.031C4.22684 39.3742 5.56533 40.2931 7.04471 40.2931H33.9554C35.4347 40.2931 36.7028 39.4448 37.1959 38.031C37.9004 36.1224 38.3231 34.0724 38.3231 31.881Z" stroke="#4546A3" stroke-width="2" stroke-miterlimit="10"/>
-              <path d="M7.60826 19.5104L1.12716 6.36208C-0.140882 3.74656 1.76118 0.706909 4.6495 0.706909L36.3505 0.777599C39.2388 0.777599 41.1409 3.81725 39.8729 6.43277L33.4622 19.581" stroke="#4546A3" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
-              <path d="M12.0463 15.9758L8.73534 9.2603C7.96042 7.70513 9.08757 5.79651 10.8487 5.79651L30.1511 5.8672C31.9123 5.8672 33.0395 7.70513 32.2645 9.33099L28.8831 16.1879" stroke="#4546A3" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
-              </g>
-              <defs>
-              <clipPath id="clip0">
-              <rect width="41" height="41" fill="white"/>
-              </clipPath>
-              </defs>
-            </svg>
             <p>medium</p>
-          </div>
         </label>
-        <label class="add-activity__option add-activity__option--intensity">
+        <label class="add-activity__option add-activity__option--intensity add-activity__option--intensity--hard">
           <input type="radio" name="intensity" value="hard">
-          <div class="add-activity__option__container">
-            <svg width="68" height="29" viewBox="0 0 68 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0)">
-              <path d="M51.0189 12.3325H17.0566V16.5928H51.0189V12.3325Z" stroke="#ECEDF6" stroke-width="2" stroke-miterlimit="10"/>
-              <path d="M9.43396 2.24228V26.7577C9.43396 27.5799 10.1132 28.2526 10.9434 28.2526H15.5472C16.3774 28.2526 17.0566 27.5799 17.0566 26.7577V2.24228C17.0566 1.42012 16.3774 0.747437 15.5472 0.747437H10.9434C10.1132 0.747437 9.43396 1.42012 9.43396 2.24228Z" stroke="#ECEDF6" stroke-width="2" stroke-miterlimit="10"/>
-              <path d="M3.69824 6.35312V22.6469C3.69824 23.4691 4.37749 24.1418 5.20768 24.1418H7.92466C8.75485 24.1418 9.43409 23.4691 9.43409 22.6469V6.35312C9.43409 5.53096 8.75485 4.85828 7.92466 4.85828H5.20768C4.37749 4.85828 3.69824 5.53096 3.69824 6.35312Z" stroke="#ECEDF6" stroke-width="2" stroke-miterlimit="10"/>
-              <path d="M0.754761 11.8093V17.1908C0.754761 17.6392 1.05665 17.9382 1.50948 17.9382H2.94344C3.39627 17.9382 3.69816 17.6392 3.69816 17.1908V11.8093C3.69816 11.3609 3.39627 11.0619 2.94344 11.0619H1.50948C1.05665 11.0619 0.754761 11.3609 0.754761 11.8093Z" stroke="#ECEDF6" stroke-width="2" stroke-miterlimit="10"/>
-              <path d="M58.566 2.24228V26.7577C58.566 27.5799 57.8868 28.2526 57.0566 28.2526H52.4528C51.6226 28.2526 50.9434 27.5799 50.9434 26.7577V2.24228C50.9434 1.42012 51.6226 0.747437 52.4528 0.747437H57.0566C57.8868 0.747437 58.566 1.42012 58.566 2.24228Z" stroke="#ECEDF6" stroke-width="2" stroke-miterlimit="10"/>
-              <path d="M64.3018 6.35312V22.6469C64.3018 23.4691 63.6225 24.1418 62.7923 24.1418H60.0754C59.2452 24.1418 58.5659 23.4691 58.5659 22.6469V6.35312C58.5659 5.53096 59.2452 4.85828 60.0754 4.85828H62.7923C63.6225 4.85828 64.3018 5.53096 64.3018 6.35312Z" stroke="#ECEDF6" stroke-width="2" stroke-miterlimit="10"/>
-              <path d="M67.2453 11.8093V17.1908C67.2453 17.6392 66.9434 17.9382 66.4906 17.9382H65.0566C64.6038 17.9382 64.3019 17.6392 64.3019 17.1908V11.8093C64.3019 11.3609 64.6038 11.0619 65.0566 11.0619H66.4906C66.9434 11.0619 67.2453 11.3609 67.2453 11.8093Z" stroke="#ECEDF6" stroke-width="2" stroke-miterlimit="10"/>
-              </g>
-              <defs>
-              <clipPath id="clip0">
-              <rect width="68" height="29" fill="white"/>
-              </clipPath>
-              </defs>
-            </svg>
             <p>hard</p>
           </div>
         </label>
