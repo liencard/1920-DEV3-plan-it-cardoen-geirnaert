@@ -95,9 +95,18 @@ class ActivityDAO extends DAO {
       $stmt->bindValue(':location_id', $data['location_id']);
       $stmt->bindValue(':intensity', $data['intensity']);
       $stmt->bindValue(':timestamp', $data['timestamp']);
-      $stmt->execute();
+      if ($stmt->execute()) {
+        return $this->getLastInsertedActivityId();
+      }
     }
    return false;
+  }
+
+  public function getLastInsertedActivityId() {
+    $sql = "SELECT `id`FROM `activities` ORDER BY `timestamp` DESC LIMIT 1";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
   public function validateActivity($data){

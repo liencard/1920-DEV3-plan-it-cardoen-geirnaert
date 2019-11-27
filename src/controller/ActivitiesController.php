@@ -48,34 +48,6 @@ class ActivitiesController extends Controller {
     $focuses = $this->activityDAO->selectAllFocuses();
     $sports = $this->activityDAO->selectAllSports();
 
-    $today = new DateTime();
-    $dayOfTheWeek = date('w', strtotime($today->format('Y-m-d')));
-    $days = array();
-
-    if ($dayOfTheWeek == 7) {
-      $firstMonday= new DateTime('next monday');
-    } else {
-      $firstMonday = new DateTime('next sunday');
-      $firstMonday = $firstMonday->modify('+1 day');
-    }
-    
-    $days[0] = $firstMonday->getTimeStamp();
-    $previousDay = $firstMonday;
-    $d = 0;
-
-    while($d < 6){
-      $d++;
-
-      $previousDay = $previousDay->format('Y-m-d');
-      $nextDay = new DateTime($previousDay);
-      $nextDay = $nextDay->modify('+1 day');
-
-      $days[$d] = $nextDay->getTimeStamp();
-      $previousDay = $nextDay;
-    }
-
-    
-    var_dump($_POST);
     if (!empty($_POST['action']) && $_POST['action'] == 'newActivity'){
       $date = date("Y-m-d", $_POST['day']);
       var_dump($date);
@@ -83,8 +55,8 @@ class ActivitiesController extends Controller {
         'sport_id' => $_POST['sport'],
         'date' => $date,
         'starthour' => $_POST['starthour'],
-        'endhour' => $_POST['starthour'],
-        'location_id' => 1,
+        'endhour' => $this->getEndHour(),
+        'location_id' => $_POST['location'],
         'intensity' => $_POST['intensity'],
         'timestamp' => date('Y-m-d H:i:s'),
       );
@@ -110,8 +82,43 @@ class ActivitiesController extends Controller {
     $this->set('locations', $locations);
     $this->set('focuses', $focuses);
     $this->set('sports', $sports);
-    $this->set('days', $days);
+    $this->set('days', $this->getDaysOfNextWeek());
   }
 
+  public function getDaysOfNextWeek() {
+    $today = new DateTime();
+    $dayOfTheWeek = date('w', strtotime($today->format('Y-m-d')));
+    $days = array();
+
+    if ($dayOfTheWeek == 7) {
+      $firstMonday= new DateTime('next monday');
+    } else {
+      $firstMonday = new DateTime('next sunday');
+      $firstMonday = $firstMonday->modify('+1 day');
+    }
+
+    $days[0] = $firstMonday->getTimeStamp();
+    $previousDay = $firstMonday;
+    $d = 0;
+
+    while($d < 6){
+      $d++;
+
+      $previousDay = $previousDay->format('Y-m-d');
+      $nextDay = new DateTime($previousDay);
+      $nextDay = $nextDay->modify('+1 day');
+
+      $days[$d] = $nextDay->getTimeStamp();
+      $previousDay = $nextDay;
+    }
+
+    return $days;
+  }
+
+  public function getEndHour() {
+    $duration = ($_POST['duration'] / 4) * 60 * 60;
+    $endhour = strtotime($_POST['starthour']) + $duration;
+    return date('H:i', $endhour);
+  }
 
 }

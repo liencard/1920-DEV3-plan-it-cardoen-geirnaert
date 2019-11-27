@@ -9,6 +9,14 @@
   margin-top: 3rem;
 }
 
+.form__errors {
+  border-left: .5rem solid var(--orangeColor);
+  color: var(--darkPurpleColor);
+  font-weight: bold;
+  margin-bottom: 4rem;
+  padding-left: 1rem;
+}
+
 .add-activity {
   margin-top: 5rem;
 }
