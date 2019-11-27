@@ -2,6 +2,25 @@
   margin: var(--mediumMargin) var(--smallMargin);
 }
 
+.form__title {
+  color: var(--darkPurpleColor);
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-top: 3rem;
+}
+
+.form__errors {
+  border-left: .5rem solid var(--orangeColor);
+  color: var(--darkPurpleColor);
+  font-weight: bold;
+  margin-bottom: 4rem;
+  padding-left: 1rem;
+}
+
+.add-activity {
+  margin-top: 5rem;
+}
+
 .add-activity__form-item {
   display: flex;
   flex-direction: column;
@@ -11,6 +30,7 @@
   color: var(--orangeColor);
   font-weight: 600;
   padding-bottom: var(--smallMargin);
+  font-size: 1.6rem;
 }
 
 .add-activity__options-container {
@@ -167,4 +187,24 @@
   &:focus {
     color: var(--orangeColor);
   }
+}
+
+@media screen and (min-width: 650px) {
+
+  .center {
+    width: 35rem;
+    margin: var(--mediumMargin) auto;
+  }
+
+  .form__title {
+    margin-top: 10rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+
+  .center {
+    width: 45rem;
+  }
+
 }

@@ -1,23 +1,14 @@
-.header__detail {
-  background-color: var(--purpleColor);
-  padding: 2.5rem;
-  color: white;
-
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+.detail__wrapper {
+  margin: var(--mediumMargin) var(--smallMargin);
 }
 
-.detail__title {
-  font-weight: 600;
-  font-size: 1.8rem;
+.detail__back {
+  margin-top: 6rem;
 }
 
-.header__detail a {
+.detail__back a {
   text-decoration: none;
-  color: white;
+  color: var(--purpleColor);
   font-size: 1.4rem;
   font-weight: 300;
 
@@ -31,34 +22,137 @@
 }
 
 .activity__details {
-  margin: 4rem 3rem;
+  margin-top: 3rem;
+  width: 100%;
 }
 
 .details__main {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  text-transform: capitalize;
 }
 
-.details__main img {
-  width: 9rem;
-  margin-right: 3.5rem;
+.details__img {
+  background-color: var(--whiteColor);
+  box-shadow: 0 .2rem 1rem rgba(0, 0, 0, .15);
+  border-radius: var(--borderRadius);
+  padding: 2rem 3rem;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.details__img img {
+  width: 7rem;
+}
+
+.details__img p {
+  font-size: 1.2rem;
+  color: var(--purpleColor);
+  font-weight: 700;
+  margin-top: 1.5rem;
+  text-transform: uppercase;
 }
 
 .detail__sport {
   color: var(--darkPurpleColor);
   font-size: 2.4rem;
   font-weight: 700;
+  margin-bottom: 2rem;
 }
 
-.detail__time, .detail__location {
-  color: var(--greenColor);
+.detail__time, .detail__location, .detail__date {
+  color: var(--orangeColor);
   font-size: 1.4rem;
   margin-top: 1rem;
+
+  &::before {
+    content: '';
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 2.5rem;
+  }
+}
+
+.detail__time::before {
+  background-image: url(../assets/img/icon-time.svg);
+}
+
+.detail__location::before {
+  background-image: url(../assets/img/icon-location.svg);
+}
+
+.detail__date::before {
+  background-image: url(../assets/img/icon-date.svg);
 }
 
 .detail__subtitle {
-  color: var(--orangeColor);
-  font-size: 1.6rem;
+  color: var(--darkPurpleColor);
+  font-size: 2rem;
   font-weight: 600;
   margin-top: 3rem;
+}
+
+.overview__title {
+  color: var(--orangeColor);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.focus__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.overview__focus {
+  text-transform: uppercase;
+  color: var(--purpleColor);
+  font-size: 1.2rem;
+  background-color: var(--whiteColor);
+  box-shadow: 0 .2rem 1rem rgba(0, 0, 0, .15);
+  border-radius: var(--borderRadius);
+  padding: 1.5rem;
+  display: inline-block;
+  font-weight: 700;
+  width: 14.5rem;
+  text-align: center;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+}
+
+.details__buttons {
+  margin-top: 6rem;
+}
+
+.btn__detail {
+  border: .2rem solid var(--darkPurpleColor);
+  border-radius: 3rem;
+  padding: 1rem 5rem;
+  color: var(--darkPurpleColor);
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.btn__edit {
+  border: .2rem solid var(--darkPurpleColor);
+  color: var(--darkPurpleColor);
+  margin-right: 4rem;
+}
+
+.btn__delete {
+  border: .2rem solid var(--orangeColor);
+  color: var(--orangeColor);
+}
+
+@media screen and (min-width: 650px) {
+
+  .detail__wrapper {
+    margin: 0 auto;
+  }
 }
