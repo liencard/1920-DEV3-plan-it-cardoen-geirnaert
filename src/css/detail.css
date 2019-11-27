@@ -129,6 +129,7 @@
 }
 
 .btn__detail {
+  background-color: inherit;
   border: .2rem solid var(--darkPurpleColor);
   border-radius: 3rem;
   padding: 1rem 5rem;
