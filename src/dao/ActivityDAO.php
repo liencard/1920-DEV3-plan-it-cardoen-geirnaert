@@ -8,7 +8,8 @@ class ActivityDAO extends DAO {
     $sql = "SELECT `activities`.`id` AS `activity_id`, `sports`.`sport`, `activities`.`date`, `activities`.`starthour`, `activities`.`endhour`, `activities`.`intensity`, `locations`.`location`, `sports`.`icon` AS `sport_icon`, `locations`.`icon` AS `location_icon`
     FROM `activities`
     INNER JOIN `sports` ON `activities`.`sport_id` = `sports`.`id`
-    INNER JOIN `locations` ON `activities`.`location_id` = `locations`.`id`";
+    INNER JOIN `locations` ON `activities`.`location_id` = `locations`.`id`
+    ORDER BY `date`, `starthour`";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

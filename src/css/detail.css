@@ -120,6 +120,22 @@
   margin-bottom: 1rem;
 }
 
+.friends__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.overview__friend {
+  background-color: var(--purpleColor);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 4rem;
+  font-size: 1.2rem;
+  margin-right: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 .2rem 1rem var(--shadowColor);
+}
+
 .details__buttons {
   margin-top: 6rem;
 }

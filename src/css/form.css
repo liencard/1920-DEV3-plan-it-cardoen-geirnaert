@@ -216,6 +216,55 @@
   }
 }
 
+.friends__bubbles__wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.friends__bubble {
+  background-color: var(--purpleColor);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 4rem;
+  font-size: 1.2rem;
+  margin-right: 1.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1;
+  box-shadow: 0 .2rem 1rem var(--shadowColor);
+
+  display: flex;
+}
+
+.friends__label {
+  border-bottom: .2rem solid var(--purpleColor);
+  padding-bottom: 1rem;
+  font-size: 1.2rem;
+  margin-right: 4rem;
+}
+
+.friends__label input {
+  border: none;
+  background-color: transparent;
+}
+
+.friends__label__wrapper {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.btn__addfriend {
+  border: .2rem solid var(--purpleColor);
+  padding: .2rem 2rem;
+  font-size: 1.3rem;
+}
+
+.delete__bubble {
+  color: white;
+  margin-left: 1rem;
+}
+
 @media screen and (min-width: 650px) {
 
   .form {

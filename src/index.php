@@ -11,9 +11,7 @@ if (file_exists("../.env")) {
   }
 }
 
-if (empty($_SESSION['sportFriends'])) {
-  $_SESSION['sportFriends'] = array();
-}
+
 
 $routes = array(
   'home' => array(

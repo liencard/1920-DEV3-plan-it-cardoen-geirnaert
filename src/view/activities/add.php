@@ -110,6 +110,23 @@
 
     <div class="add-activity__form-item add-activity__form-item__friends">
       <h3 class="add-activity__label">Who will you take with you?</h3>
+
+      <div class="friends__bubbles__wrapper">
+        <?php foreach($_SESSION['sportFriends'] as $friend)
+          { ?>
+          <div class="friends__bubble">
+            <p> <?php echo $friend; ?> </p>
+            <button type="submit" class="delete__bubble" name="removeFriend" value="<?php echo $friend; ?>">x</button>
+          </div>
+        <?php } ?>
+      </div>
+
+      <div class="friends__label__wrapper">
+        <label class="friends__label">Name:
+            <input type="text" name="nameFriend">
+        </label>
+        <button type="submit" class="btn__detail btn__addfriend" name="addFriend">+ add friend</button>
+      </div>
     </div>
 
     <div class="add-activity__form-item add-activity__form-item__intensity">
@@ -146,6 +163,6 @@
         <?php endforeach; ?>
       </div>
     </div>
-    <input type="submit" class="btn__detail btn__edit" value="Save" />
+    <button type="submit" class="btn__detail btn__edit" name="save">save</button>
   </form>
 </section>

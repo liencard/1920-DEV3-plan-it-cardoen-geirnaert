@@ -30,7 +30,7 @@
       <h4 class="overview__title">With</h4>
       <div class="friends__wrapper">
         <?php foreach ($friends as $friend): ?>
-          <p class="overview__focus"><?php echo $friend['firstname']; ?></p>
+          <p class="overview__friend"><?php echo $friend['firstname']; ?></p>
         <?php endforeach; ?>
       </div>
 
