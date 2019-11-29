@@ -50,7 +50,8 @@ class ActivitiesController extends Controller {
 
     if (!empty($_POST['action']) && $_POST['action'] == 'newActivity'){
       $date = date("Y-m-d", $_POST['day']);
-      var_dump($date);
+      $selectedFocuses = $_POST['focus'];
+
       $data = array(
         'sport_id' => $_POST['sport'],
         'date' => $date,
@@ -67,7 +68,12 @@ class ActivitiesController extends Controller {
         $errors = $this->activityDAO->validateActivity($data);
         $this->set('errors', $errors);
       } else {
-        header('Location:index.php?page=detail&id=' . $newActivity['id']);
+        foreach ($selectedFocuses as $focusId) {
+          $data['activity_id'] = $newActivity['activity_id'];
+          $data['focus_id'] = $focusId;
+          $this->activityDAO->insertFocus($data);
+        }
+        header('Location:index.php?page=detail&id=' . $newActivity['activity_id']);
         exit();
       }
     }
@@ -104,8 +110,7 @@ class ActivitiesController extends Controller {
     while($d < 6){
       $d++;
 
-      $previousDay = $previousDay->format('Y-m-d');
-      $nextDay = new DateTime($previousDay);
+      $nextDay = clone $previousDay;
       $nextDay = $nextDay->modify('+1 day');
 
       $days[$d] = $nextDay->getTimeStamp();

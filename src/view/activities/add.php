@@ -138,7 +138,7 @@
       <div class="add-activity__options-container">
         <?php foreach ($focuses as $focus): ?>
           <label class="add-activity__option add-activity__option--focus">
-            <input type="checkbox" name="focus" value="">
+            <input type="checkbox" name="focus[]" value="<?php echo $focus['id'] ?>">
             <div class="add-activity__option__container">
               <p><?php echo $focus['name'] ?></p>
             </div>
