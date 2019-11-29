@@ -59,6 +59,7 @@ class ActivitiesController extends Controller {
       if(isset($_POST['save'])){
         $date = date("Y-m-d", $_POST['day']);
         $selectedFocuses = $_POST['focus'];
+        $selectedFriends = $_SESSION['sportFriends'];
 
         $data = array(
           'sport_id' => $_POST['sport'],
@@ -80,6 +81,11 @@ class ActivitiesController extends Controller {
             $data['activity_id'] = $newActivity['activity_id'];
             $data['focus_id'] = $focusId;
             $this->activityDAO->insertFocus($data);
+          }
+          foreach ($selectedFriends as $firstname) {
+            $data['activity_id'] = $newActivity['activity_id'];
+            $data['firstname'] = $firstname;
+            $this->activityDAO->insertFriend($data);
           }
           header('Location:index.php?page=detail&id=' . $newActivity['activity_id']);
           exit();

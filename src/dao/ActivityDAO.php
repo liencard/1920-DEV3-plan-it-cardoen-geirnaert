@@ -113,6 +113,15 @@ class ActivityDAO extends DAO {
     }
   }
 
+  public function insertFriend($data) {
+    $sql = "INSERT INTO `friends` (`firstname`, `activity_id`) VALUES (:firstname, :activity_id)";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':firstname', $data['firstname']);
+    $stmt->bindValue(':activity_id', $data['activity_id']);
+    if ($stmt->execute()) {
+      return $this->pdo->lastInsertId();
+    }
+  }
   public function getLastInsertedActivityId() {
     $sql = "SELECT `id`FROM `activities` ORDER BY `timestamp` DESC LIMIT 1";
     $stmt = $this->pdo->prepare($sql);
