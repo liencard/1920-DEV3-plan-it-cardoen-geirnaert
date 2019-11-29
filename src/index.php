@@ -11,8 +11,6 @@ if (file_exists("../.env")) {
   }
 }
 
-
-
 $routes = array(
   'home' => array(
     'controller' => 'Activities',

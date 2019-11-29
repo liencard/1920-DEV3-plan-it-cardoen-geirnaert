@@ -55,10 +55,11 @@ class ActivitiesController extends Controller {
       if (isset($_POST['addFriend'])){
         $name = $_POST['nameFriend'];
         $_SESSION['sportFriends'][] = $name;
+      }
 
-      } if(isset($_POST['save'])){
+      if(isset($_POST['save'])){
         $date = date("Y-m-d", $_POST['day']);
-        var_dump($date);
+        // var_dump($date);
         $data = array(
           'sport_id' => $_POST['sport'],
           'date' => $date,
@@ -78,7 +79,9 @@ class ActivitiesController extends Controller {
           header('Location:index.php?page=detail&id=' . $newActivity['id']);
           exit();
         }
-      } if (isset($_POST['removeFriend'])) {
+      }
+
+      if (isset($_POST['removeFriend'])) {
         $this->_handleRemove();
         header('Location: index.php?page=add-activity');
         exit();
@@ -100,8 +103,12 @@ class ActivitiesController extends Controller {
   }
 
   private function _handleRemove() {
-    if (isset($_SESSION['sportFriends'][$_POST['removeFriend']])) {
-      unset($_SESSION['sportFriends'][$_POST['removeFriend']]);
+    if (isset($_SESSION['sportFriends'])) {
+        foreach($_SESSION['sportFriends'] as $key => $value){
+          if ($value === $_POST['removeFriend']) {
+            unset($_SESSION['sportFriends'][$key]);
+          };
+        }
     }
   }
 

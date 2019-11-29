@@ -8,16 +8,9 @@
   <form action="index.php?page=add-activity" method="POST" class="add-activity">
     <input type="hidden" name="action" value="newActivity">
 
-    <?php if (isset($errors)): ?>
-      <div class="form__errors">
-        <?php foreach ($errors as $error): ?>
-          <p class="error"><?php echo $error; ?></p>
-        <?php endforeach; ?>
-      </div>
-    <?php endif; ?>
-
-    <div class="add-activity__form-item add-activity__form-item__type">
+    <div class="add-activity__form-item addactivity__form-item__type">
       <h3 class="add-activity__label">Choose your type of sport</h3>
+      <span class="form__errors"><?php if(!empty($errors['sport'])){ echo $errors['sport'];} ?></span>
       <div class="add-activity__options-container">
         <?php foreach ($types as $type): ?>
           <label class="add-activity__option add-activity__option--square">
@@ -33,6 +26,7 @@
 
     <div class="add-activity__form-item add-activity__form-item__sport">
       <h3 class="add-activity__label">Choose your sport</h3>
+      <span class="form__errors"><?php if(!empty($errors['sport'])){ echo $errors['sport'];} ?></span>
       <div class="add-activity__options-container">
         <?php foreach ($sports as $sport): ?>
           <label class="add-activity__option add-activity__option--square">
@@ -47,6 +41,7 @@
 
     <div class="add-activity__form-item add-activity__form-item__date">
       <h3 class="add-activity__label">When do you want to sport?</h3>
+      <span class="form__errors"><?php if(!empty($errors['day'])){ echo $errors['day'];} ?></span>
       <div class="add-activity__options-container">
         <?php foreach ($days as $day): ?>
           <label class="add-activity__option add-activity__option--date">
@@ -62,6 +57,7 @@
 
     <div class="add-activity__form-item add-activity__form-item__time">
       <h3 class="add-activity__label">What time will you start?</h3>
+      <span class="form__errors"><?php if(!empty($errors['starthour'])){ echo $errors['starthour'];} ?></span>
       <div class="add-activity__options-container">
         <label class="add-activity__option add-activity__option--time">
           <input type="time" name="starthour" class="input-time" value="13:30">
@@ -71,6 +67,7 @@
 
     <div class="add-activity__form-item add-activity__form-item__duration">
       <h3 class="add-activity__label">How long will you sport?</h3>
+      <span class="form__errors"><?php if(!empty($errors['endhour'])){ echo $errors['endhour'];} ?></span>
       <div class="add-activity__options-container add-activity__option--duration">
         <div class="duration-slider">
           <span class="ds-label">0</span>
@@ -90,6 +87,7 @@
 
     <div class="add-activity__form-item add-activity__form-item__location">
       <h3 class="add-activity__label">Where will you sport?</h3>
+      <span class="form__errors"><?php if(!empty($errors['location'])){ echo $errors['location'];} ?></span>
       <div class="add-activity__options-container">
         <?php foreach ($locations as $location): ?>
           <label class="add-activity__option add-activity__option--location">
@@ -110,7 +108,7 @@
 
     <div class="add-activity__form-item add-activity__form-item__friends">
       <h3 class="add-activity__label">Who will you take with you?</h3>
-
+      <span class="form__errors"><?php if(!empty($errors['location'])){ echo $errors['location'];} ?></span>
       <div class="friends__bubbles__wrapper">
         <?php foreach($_SESSION['sportFriends'] as $friend)
           { ?>
@@ -131,6 +129,7 @@
 
     <div class="add-activity__form-item add-activity__form-item__intensity">
       <h3 class="add-activity__label">What will be the intensity of your sport?</h3>
+      <span class="form__errors"><?php if(!empty($errors['intensity'])){ echo $errors['intensity'];} ?></span>
       <div class="add-activity__options-container">
         <label class="add-activity__option add-activity__option--intensity add-activity__option--intensity--light">
           <input type="radio" name="intensity" value="light">
@@ -152,6 +151,7 @@
 
     <div class="add-activity__form-item add-activity__form-item__focus">
       <h3 class="add-activity__label">Which items do you want to focus on?</h3>
+      <span class="form__errors"><?php if(!empty($errors['location'])){ echo $errors['location'];} ?></span>
       <div class="add-activity__options-container">
         <?php foreach ($focuses as $focus): ?>
           <label class="add-activity__option add-activity__option--focus">

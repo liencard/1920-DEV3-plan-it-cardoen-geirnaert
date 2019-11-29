@@ -112,20 +112,20 @@ class ActivityDAO extends DAO {
 
   public function validateActivity($data){
     $errors = [];
-    if (empty($data['sport_id'])) {
-      $errors['sport_id'] = 'Please select a sport for your activity';
+    if (!isset($data['sport_id']) || empty($data['sport_id'])) {
+      $errors['sport'] = 'Please select a sport for your activity';
     }
     if (empty($data['date'])) {
-      $errors['date'] = 'Please select a date for your activity';
+      $errors['day'] = 'Please select a date for your activity';
     }
     if (empty($data['starthour'])) {
       $errors['starthour'] = 'Please select a starthour for your activity';
     }
     if (empty($data['endhour'])) {
-      $errors['endhour'] = 'Please select a endhour for your activity';
+      $errors['endhour'] = 'Please select how long you want your activity to be';
     }
     if (empty($data['location_id'])) {
-      $errors['location_id'] = 'Please select a location for your activity';
+      $errors['location'] = 'Please select a location for your activity';
     }
     if (empty($data['intensity'])) {
       $errors['intensity'] = 'Please select an intensity for your activity';
