@@ -51,7 +51,6 @@ class ActivitiesController extends Controller {
     // $_SESSION['sportFriends'] = array();
 
     if (!empty($_POST['action']) && $_POST['action'] == 'newActivity'){
-
       if (isset($_POST['addFriend'])){
         $name = $_POST['nameFriend'];
         $_SESSION['sportFriends'][] = $name;
@@ -59,7 +58,8 @@ class ActivitiesController extends Controller {
 
       if(isset($_POST['save'])){
         $date = date("Y-m-d", $_POST['day']);
-        // var_dump($date);
+        $selectedFocuses = $_POST['focus'];
+
         $data = array(
           'sport_id' => $_POST['sport'],
           'date' => $date,
@@ -76,7 +76,12 @@ class ActivitiesController extends Controller {
           $errors = $this->activityDAO->validateActivity($data);
           $this->set('errors', $errors);
         } else {
-          header('Location:index.php?page=detail&id=' . $newActivity['id']);
+          foreach ($selectedFocuses as $focusId) {
+            $data['activity_id'] = $newActivity['activity_id'];
+            $data['focus_id'] = $focusId;
+            $this->activityDAO->insertFocus($data);
+          }
+          header('Location:index.php?page=detail&id=' . $newActivity['activity_id']);
           exit();
         }
       }
@@ -84,7 +89,6 @@ class ActivitiesController extends Controller {
       if (isset($_POST['removeFriend'])) {
         $this->_handleRemove();
         header('Location: index.php?page=add-activity');
-        exit();
       }
 
     }
@@ -131,8 +135,7 @@ class ActivitiesController extends Controller {
     while($d < 6){
       $d++;
 
-      $previousDay = $previousDay->format('Y-m-d');
-      $nextDay = new DateTime($previousDay);
+      $nextDay = clone $previousDay;
       $nextDay = $nextDay->modify('+1 day');
 
       $days[$d] = $nextDay->getTimeStamp();

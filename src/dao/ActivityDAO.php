@@ -97,10 +97,20 @@ class ActivityDAO extends DAO {
       $stmt->bindValue(':intensity', $data['intensity']);
       $stmt->bindValue(':timestamp', $data['timestamp']);
       if ($stmt->execute()) {
-        return $this->getLastInsertedActivityId();
+        return $this->selectActivityById($this->pdo->lastInsertId());
       }
     }
    return false;
+  }
+
+  public function insertFocus($data) {
+    $sql = "INSERT INTO `activities_have_focuses` (`activity_id`, `focus_id`) VALUES (:activity_id, :focus_id)";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':activity_id', $data['activity_id']);
+    $stmt->bindValue(':focus_id', $data['focus_id']);
+    if ($stmt->execute()) {
+      return $this->pdo->lastInsertId();
+    }
   }
 
   public function getLastInsertedActivityId() {
