@@ -99,6 +99,33 @@
   margin-bottom: 2rem;
 }
 
+.intensity__wrapper {
+  background-position: top;
+  background-repeat: no-repeat;
+  width: 8rem;
+
+  padding-top: 6rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: var(--fontWeightBold);
+  color: var(--purpleColor);
+  font-size: 1.4rem;
+  margin-top: var(--mediumMargin);
+}
+
+.intensity__wrapper--light {
+  background-image: url(../assets/img/light-icon-selected.svg);
+}
+
+.intensity__wrapper--medium {
+  background-image: url(../assets/img/medium-icon-selected.svg);
+}
+
+.intensity__wrapper--hard {
+  background-image: url(../assets/img/hard-icon-selected.svg);
+}
+
+
 .focus__wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;

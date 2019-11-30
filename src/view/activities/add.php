@@ -17,13 +17,7 @@
             <input type="radio" name="type" value="<?php echo $type['id'] ?>">
 
             <!-- NOG BEKIJKEN -->
-            <div class="add-activity__option__container
-
-             <?php if($_SESSION['formData']['type'] == $type) {
-                echo ' selected';
-               } ?>
-
-            ">
+            <div class="add-activity__option__container">
               <?php echo $type['icon']; ?>
               <p><?php echo $type['name'] ?></p>
             </div>

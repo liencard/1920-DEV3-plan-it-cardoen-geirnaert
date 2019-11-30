@@ -62,10 +62,10 @@ class ActivitiesController extends Controller {
     $focuses = $this->activityDAO->selectAllFocuses();
     $sports = $this->activityDAO->selectAllSports();
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $_SESSION['formData'] = $_POST;
-      //unset($_POST);
-    }
+    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //   $_SESSION['formData'] = $_POST;
+    //   //unset($_POST);
+    // }
 
     if (!empty($_POST['action']) && $_POST['action'] == 'newActivity'){
       if (isset($_POST['addFriend'])){

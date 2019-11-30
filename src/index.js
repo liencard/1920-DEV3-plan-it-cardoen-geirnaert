@@ -1,5 +1,5 @@
 require('./style.css');
-// require('./js/validate.js');
+require('./js/validate.js');
 
 {
   const showSliderValue = () => {
@@ -31,7 +31,7 @@ require('./style.css');
       $rangeSlider.addEventListener('input', showSliderValue());
     }
 
-    document.querySelector(`form`).addEventListener(`submit`, handleSubmit);
+    //document.querySelector(`form`).addEventListener(`submit`, handleSubmit);
 
 
   };

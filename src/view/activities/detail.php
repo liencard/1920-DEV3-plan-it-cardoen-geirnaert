@@ -35,8 +35,18 @@
       </div>
 
       <h4 class="overview__title">Intensity</h4>
-      <p class="overview__focus"><?php echo $activity['intensity']; ?></p>
 
+      <div class="intensity__wrapper
+          <?php if($activity['intensity'] === 'light') {
+                echo ' intensity__wrapper--light';
+               } if($activity['intensity'] === 'medium') {
+                echo ' intensity__wrapper--medium';
+               } if($activity['intensity'] === 'hard') {
+                echo ' intensity__wrapper--hard';
+               } ?>
+      ">
+        <p class="ww"><?php echo $activity['intensity']; ?></p>
+      </div>
 
       <h4 class="overview__title">Focus</h4>
       <div class="focus__wrapper">
