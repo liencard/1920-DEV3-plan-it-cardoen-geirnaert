@@ -14,8 +14,16 @@
       <div class="add-activity__options-container">
         <?php foreach ($types as $type): ?>
           <label class="add-activity__option add-activity__option--square">
-            <input type="radio" name="type" value="<?php echo $type['id']; ?>">
-            <div class="add-activity__option__container">
+            <input type="radio" name="type" value="<?php echo $type['id'] ?>">
+
+            <!-- NOG BEKIJKEN -->
+            <div class="add-activity__option__container
+
+             <?php if($_SESSION['formData']['type'] == $type) {
+                echo ' selected';
+               } ?>
+
+            ">
               <?php echo $type['icon']; ?>
               <p><?php echo $type['name'] ?></p>
             </div>
@@ -41,7 +49,7 @@
     </div>
 
     <div class="add-activity__form-item add-activity__form-item__date">
-      <h3 class="add-activity__label">When do you want to sport?</h3>
+      <h3 class="add-activity__label">When do you want to sport? (next week)</h3>
       <span class="form__errors"><?php if(!empty($errors['day'])){ echo $errors['day'];} ?></span>
       <div class="add-activity__options-container">
         <?php foreach ($days as $day): ?>
