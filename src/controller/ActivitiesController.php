@@ -13,7 +13,21 @@ class ActivitiesController extends Controller {
 
   public function index() {
     $activities = $this->activityDAO->selectAllActivities();
-    $this->set('activities', $activities);
+    $sortedActivities = array();
+    $previousDate = date('Y-m-d');
+    $sortedActivities[$previousDate] = array();
+
+    foreach ($activities as $activity) {
+      if ($activity['date'] === $previousDate) {
+        array_push($sortedActivities[$previousDate], $activity);
+      } else {
+        $previousDate = $activity['date'];
+        $sortedActivities[$previousDate] = array();
+        array_push($sortedActivities[$previousDate], $activity);
+      }
+    }
+
+    $this->set('sortedActivities', $sortedActivities);
     $this->set('title', 'Home');
   }
 
@@ -49,33 +63,58 @@ class ActivitiesController extends Controller {
     $sports = $this->activityDAO->selectAllSports();
 
     if (!empty($_POST['action']) && $_POST['action'] == 'newActivity'){
-      $date = date("Y-m-d", $_POST['day']);
-      var_dump($date);
-      $data = array(
-        'sport_id' => $_POST['sport'],
-        'date' => $date,
-        'starthour' => $_POST['starthour'],
-        'endhour' => $this->getEndHour(),
-        'location_id' => $_POST['location'],
-        'intensity' => $_POST['intensity'],
-        'timestamp' => date('Y-m-d H:i:s'),
-      );
-
-      $newActivity = $this->activityDAO->insertActivity($data);
-
-      if (empty($newActivity)) {
-        $errors = $this->activityDAO->validateActivity($data);
-        $this->set('errors', $errors);
-      } else {
-        header('Location:index.php?page=detail&id=' . $newActivity['id']);
-        exit();
+      if (isset($_POST['addFriend'])){
+        $name = $_POST['nameFriend'];
+        $_SESSION['sportFriends'][] = $name;
       }
+
+      if(isset($_POST['save'])){
+        $date = date("Y-m-d", $_POST['day']);
+        $selectedFocuses = $_POST['focus'];
+        $selectedFriends = $_SESSION['sportFriends'];
+
+        $data = array(
+          'sport_id' => $_POST['sport'],
+          'date' => $date,
+          'starthour' => $_POST['starthour'],
+          'endhour' => $this->getEndHour(),
+          'location_id' => $_POST['location'],
+          'intensity' => $_POST['intensity'],
+          'timestamp' => date('Y-m-d H:i:s'),
+        );
+
+        $newActivity = $this->activityDAO->insertActivity($data);
+
+        if (empty($newActivity)) {
+          $errors = $this->activityDAO->validateActivity($data);
+          $this->set('errors', $errors);
+        } else {
+          foreach ($selectedFocuses as $focusId) {
+            $data['activity_id'] = $newActivity['activity_id'];
+            $data['focus_id'] = $focusId;
+            $this->activityDAO->insertFocus($data);
+          }
+          foreach ($selectedFriends as $firstname) {
+            $data['activity_id'] = $newActivity['activity_id'];
+            $data['firstname'] = $firstname;
+            $this->activityDAO->insertFriend($data);
+          }
+          header('Location:index.php?page=detail&id=' . $newActivity['activity_id']);
+          exit();
+        }
+      }
+
+      if (isset($_POST['removeFriend'])) {
+        $this->_handleRemove();
+        header('Location: index.php?page=add-activity');
+      }
+
     }
 
-    if (!empty($_GET['action']) && $_GET['action'] == 'delete_activity') {
-      $activityDAO->delete($_GET['id']);
-      header('Location:index.php');
-    }
+    // if (!empty($_GET['action']) && $_GET['action'] == 'delete_activity') {
+    //   $activityDAO->delete($_GET['id']);
+    //   header('Location:index.php');
+    // }
 
     $this->set('title', 'Add activity');
     $this->set('types', $types);
@@ -83,6 +122,16 @@ class ActivitiesController extends Controller {
     $this->set('focuses', $focuses);
     $this->set('sports', $sports);
     $this->set('days', $this->getDaysOfNextWeek());
+  }
+
+  private function _handleRemove() {
+    if (isset($_SESSION['sportFriends'])) {
+        foreach($_SESSION['sportFriends'] as $key => $value){
+          if ($value === $_POST['removeFriend']) {
+            unset($_SESSION['sportFriends'][$key]);
+          };
+        }
+    }
   }
 
   public function getDaysOfNextWeek() {
@@ -104,8 +153,7 @@ class ActivitiesController extends Controller {
     while($d < 6){
       $d++;
 
-      $previousDay = $previousDay->format('Y-m-d');
-      $nextDay = new DateTime($previousDay);
+      $nextDay = clone $previousDay;
       $nextDay = $nextDay->modify('+1 day');
 
       $days[$d] = $nextDay->getTimeStamp();

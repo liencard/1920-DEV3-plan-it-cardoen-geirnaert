@@ -59,7 +59,7 @@
   background: transparent;
   border-radius: var(--borderRadius);
   text-align: center;
-  font-weight: 600;
+  font-weight: var(--fontWeightSemiBold);
   padding-top: 1rem;
   border: .1rem solid var(--orangeColor);
   margin-left: -1rem;

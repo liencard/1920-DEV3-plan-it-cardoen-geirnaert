@@ -8,7 +8,9 @@ class ActivityDAO extends DAO {
     $sql = "SELECT `activities`.`id` AS `activity_id`, `sports`.`sport`, `activities`.`date`, `activities`.`starthour`, `activities`.`endhour`, `activities`.`intensity`, `locations`.`location`, `sports`.`icon` AS `sport_icon`, `locations`.`icon` AS `location_icon`
     FROM `activities`
     INNER JOIN `sports` ON `activities`.`sport_id` = `sports`.`id`
-    INNER JOIN `locations` ON `activities`.`location_id` = `locations`.`id`";
+    INNER JOIN `locations` ON `activities`.`location_id` = `locations`.`id`
+    WHERE `date` = curdate() OR `date` > curdate()
+    ORDER BY `date`, `starthour`";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -96,12 +98,31 @@ class ActivityDAO extends DAO {
       $stmt->bindValue(':intensity', $data['intensity']);
       $stmt->bindValue(':timestamp', $data['timestamp']);
       if ($stmt->execute()) {
-        return $this->getLastInsertedActivityId();
+        return $this->selectActivityById($this->pdo->lastInsertId());
       }
     }
    return false;
   }
 
+  public function insertFocus($data) {
+    $sql = "INSERT INTO `activities_have_focuses` (`activity_id`, `focus_id`) VALUES (:activity_id, :focus_id)";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':activity_id', $data['activity_id']);
+    $stmt->bindValue(':focus_id', $data['focus_id']);
+    if ($stmt->execute()) {
+      return $this->pdo->lastInsertId();
+    }
+  }
+
+  public function insertFriend($data) {
+    $sql = "INSERT INTO `friends` (`firstname`, `activity_id`) VALUES (:firstname, :activity_id)";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':firstname', $data['firstname']);
+    $stmt->bindValue(':activity_id', $data['activity_id']);
+    if ($stmt->execute()) {
+      return $this->pdo->lastInsertId();
+    }
+  }
   public function getLastInsertedActivityId() {
     $sql = "SELECT `id`FROM `activities` ORDER BY `timestamp` DESC LIMIT 1";
     $stmt = $this->pdo->prepare($sql);
@@ -111,20 +132,20 @@ class ActivityDAO extends DAO {
 
   public function validateActivity($data){
     $errors = [];
-    if (empty($data['sport_id'])) {
-      $errors['sport_id'] = 'Please select a sport for your activity';
+    if (!isset($data['sport_id']) || empty($data['sport_id'])) {
+      $errors['sport'] = 'Please select a sport for your activity';
     }
     if (empty($data['date'])) {
-      $errors['date'] = 'Please select a date for your activity';
+      $errors['day'] = 'Please select a date for your activity';
     }
     if (empty($data['starthour'])) {
       $errors['starthour'] = 'Please select a starthour for your activity';
     }
     if (empty($data['endhour'])) {
-      $errors['endhour'] = 'Please select a endhour for your activity';
+      $errors['endhour'] = 'Please select how long you want your activity to be';
     }
     if (empty($data['location_id'])) {
-      $errors['location_id'] = 'Please select a location for your activity';
+      $errors['location'] = 'Please select a location for your activity';
     }
     if (empty($data['intensity'])) {
       $errors['intensity'] = 'Please select an intensity for your activity';

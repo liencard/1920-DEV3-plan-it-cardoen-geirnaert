@@ -29,7 +29,7 @@
   flex-direction: column;
 
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: var(--fontWeightBold);
 }
 
 .hours__subtitle {
@@ -37,10 +37,9 @@
   flex-direction: column;
 
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: var(--fontWeightRegular);
   text-transform: uppercase;
   padding-bottom: 2.8rem; /* luistert niet */
-
 }
 
 @media screen and (min-width: 450px) {

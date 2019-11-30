@@ -19,7 +19,7 @@
       </div>
 
       <div class="details__img">
-        <img srcset="<?php echo $activity['sport_icon']; ?> 90w" sizes="90px" src="<?php echo $activity['sport_icon']; ?>" alt="Kickbox gloves icon">
+        <?php echo $activity['sport_icon']; ?>
         <p><?php echo $activity['sport']; ?></p>
       </div>
     </div>
@@ -30,7 +30,7 @@
       <h4 class="overview__title">With</h4>
       <div class="friends__wrapper">
         <?php foreach ($friends as $friend): ?>
-          <p class="overview__focus"><?php echo $friend['firstname']; ?></p>
+          <p class="overview__friend"><?php echo $friend['firstname']; ?></p>
         <?php endforeach; ?>
       </div>
 

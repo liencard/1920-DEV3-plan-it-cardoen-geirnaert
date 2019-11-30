@@ -30,6 +30,12 @@ class Controller {
     if (!empty($_SESSION['error'])) {
       unset($_SESSION['error']);
     }
+    // unset($_SESSION['sportFriends']);
+
+    if (!isset($_SESSION['sportFriends'])) {
+      $_SESSION['sportFriends'] = array();
+
+    }
   }
 
   public function set($variableName, $value) {
