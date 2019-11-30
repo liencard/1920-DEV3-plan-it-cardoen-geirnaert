@@ -1,16 +1,16 @@
 .activities {
-  margin: 2rem 3rem;
+  margin: var(--smallMargin);
 }
 
 .activities__title {
-  font-weight: 700;
+  font-weight: var(--fontWeightBold);
   color: var(--darkPurpleColor);
   font-size: 1.6rem;
   margin-bottom: 2rem;
 }
 
 .activities__day {
-  font-weight: 600;
+  font-weight: var(--fontWeightSemiBold);
   color: var(--darkPurpleColor);
   font-size: 1.2rem;
   margin-bottom: 1.2rem;
@@ -49,7 +49,7 @@
 .activity__button__name {
   color: var(--darkPurpleColor);
   font-size: 2.4rem;
-  font-weight: 700;
+  font-weight: var(--fontWeightBold);
   margin-top: .5rem;
   text-transform: capitalize;
 }
@@ -61,7 +61,7 @@
   width: 5rem;
   height: 5rem;
   font-size: 3rem;
-  font-weight: 300;
+  font-weight: var(--fontWeightLight);
   line-height: 0;
 
   display: flex;
@@ -97,10 +97,30 @@
   }
 }
 
+.noactivities {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.noactivities__title {
+  font-size: 1.8rem;
+  margin: var(--smallMargin) 0;
+}
+
 @media screen and (min-width: 850px) {
 
   .activities {
     width: 60vw;
+  }
+
+  .noactivities__title {
+    font-size: 2.4rem;
+    margin: var(--mediumMargin) 0;
+  }
+
+  .noactivities img {
+    width: 21rem;
   }
 }
 

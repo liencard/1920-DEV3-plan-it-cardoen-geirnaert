@@ -25,7 +25,7 @@ html {
 body {
   background-color: var(--purpleColor);
   font-size: 1.8rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font);
   height: 100%;
 }
 
@@ -39,7 +39,6 @@ body {
   min-height: 100vh;
   padding: 5rem 0;
 }
-
 
 @media screen and (min-width: 650px) {
 
