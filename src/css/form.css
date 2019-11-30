@@ -155,7 +155,7 @@
   color: white;
 }
 
-.add-activity__option [type=radio]:checked ~ .add-activity__option__container > svg > path {
+.add-activity__option [type=radio]:checked ~ .add-activity__option__container > svg path {
   fill: white;
 }
 
@@ -167,7 +167,7 @@
   color: white;
 }
 
-.add-activity__option [type=checkbox]:checked ~ .add-activity__option__container > svg > path {
+.add-activity__option [type=checkbox]:checked ~ .add-activity__option__container > svg path {
   fill: white;
 }
 

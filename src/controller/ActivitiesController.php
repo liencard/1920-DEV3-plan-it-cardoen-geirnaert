@@ -62,8 +62,6 @@ class ActivitiesController extends Controller {
     $focuses = $this->activityDAO->selectAllFocuses();
     $sports = $this->activityDAO->selectAllSports();
 
-    // $_SESSION['sportFriends'] = array();
-
     if (!empty($_POST['action']) && $_POST['action'] == 'newActivity'){
       if (isset($_POST['addFriend'])){
         $name = $_POST['nameFriend'];

@@ -2,7 +2,7 @@
 
   <h2 class="activities__title">Planned Tasks</h2>
 
-  <?php if (!count($sortedActivities) === 1): ?>
+  <?php if (count($sortedActivities) >= 1): ?>
 
     <?php foreach ($sortedActivities as $date => $activitiesGroup): ?>
       <?php if($date == date("Y/m/d")): ?>
@@ -33,8 +33,8 @@
     <div class="activites__day__wrapper">
       <ul class="activities__list">
         <li class="activity">
-          <a class="activity__button" href="index.php?page=detail">
-            <img srcset="./assets/img/kickbox.svg 60w" sizes="40px" src="./assets/img/kickbox.svg" alt="Kickbox gloves icon">
+          <a class="activity__button" href="index.php?page=detail&id=<?php echo $activity['activity_id']; ?>">
+            <?php echo $activity['sport_icon']; ?>
             <span class="activity__button__wrapper">
               <span class="activity__button__time">18:00 - 19:00</span>
               <span class="activity__button__name">Kickbox</span>
