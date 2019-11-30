@@ -13,7 +13,21 @@ class ActivitiesController extends Controller {
 
   public function index() {
     $activities = $this->activityDAO->selectAllActivities();
-    $this->set('activities', $activities);
+    $sortedActivities = array();
+    $previousDate = date('Y-m-d');
+    $sortedActivities[$previousDate] = array();
+
+    foreach ($activities as $activity) {
+      if ($activity['date'] === $previousDate) {
+        array_push($sortedActivities[$previousDate], $activity);
+      } else {
+        $previousDate = $activity['date'];
+        $sortedActivities[$previousDate] = array();
+        array_push($sortedActivities[$previousDate], $activity);
+      }
+    }
+
+    $this->set('sortedActivities', $sortedActivities);
     $this->set('title', 'Home');
   }
 

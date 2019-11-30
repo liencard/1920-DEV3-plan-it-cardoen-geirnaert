@@ -9,6 +9,7 @@ class ActivityDAO extends DAO {
     FROM `activities`
     INNER JOIN `sports` ON `activities`.`sport_id` = `sports`.`id`
     INNER JOIN `locations` ON `activities`.`location_id` = `locations`.`id`
+    WHERE `date` = curdate() OR `date` > curdate()
     ORDER BY `date`, `starthour`";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
