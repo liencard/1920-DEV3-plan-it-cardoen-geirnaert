@@ -6,19 +6,19 @@
   text-decoration: none;
   color: var(--purpleColor);
   font-size: 1.4rem;
-  font-weight: 300;
+  font-weight: var(--fontWeightLight);
 
   &::before {
     content: '';
     background-repeat: no-repeat;
     background-image: url(../assets/img/arrow-back.svg);
     background-position: center;
-    padding-left: 3rem;
+    padding-left: var(--smallMargin);
   }
 }
 
 .activity__details {
-  margin-top: 3rem;
+  margin-top: var(--smallMargin);
   width: 100%;
 }
 
@@ -33,7 +33,7 @@
   background-color: var(--whiteColor);
   box-shadow: 0 .2rem 1rem rgba(0, 0, 0, .15);
   border-radius: var(--borderRadius);
-  padding: 2rem 3rem;
+  padding: 2rem var(--smallMargin);
 
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@
 .details__img p {
   font-size: 1.2rem;
   color: var(--purpleColor);
-  font-weight: 700;
+  font-weight: var(--fontWeightBold);
   margin-top: 1.5rem;
   text-transform: uppercase;
 }
@@ -55,7 +55,7 @@
 .detail__sport {
   color: var(--darkPurpleColor);
   font-size: 2.4rem;
-  font-weight: 700;
+  font-weight: var(--fontWeightBold);
   margin-bottom: 2rem;
 }
 
@@ -87,15 +87,15 @@
 .detail__subtitle {
   color: var(--darkPurpleColor);
   font-size: 2rem;
-  font-weight: 600;
-  margin-top: 3rem;
+  font-weight: var(--fontWeightSemiBold);
+  margin-top: var(--smallMargin);
 }
 
 .overview__title {
   color: var(--orangeColor);
   font-size: 1.8rem;
-  font-weight: 600;
-  margin-top: 3rem;
+  font-weight: var(--fontWeightSemiBold);
+  margin-top: var(--smallMargin);
   margin-bottom: 2rem;
 }
 
@@ -113,7 +113,7 @@
   border-radius: var(--borderRadius);
   padding: 1.5rem;
   display: inline-block;
-  font-weight: 700;
+  font-weight: var(--fontWeightBold);
   width: 14.5rem;
   text-align: center;
   margin-right: 2rem;
@@ -137,7 +137,7 @@
 }
 
 .details__buttons {
-  margin-top: 6rem;
+  margin-top: 5rem;
 }
 
 .btn__detail {
@@ -148,14 +148,14 @@
   color: var(--darkPurpleColor);
   text-decoration: none;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: var(--fontWeightSemiBold);
   text-transform: uppercase;
 }
 
 .btn__edit {
   border: .2rem solid var(--darkPurpleColor);
   color: var(--darkPurpleColor);
-  margin-right: 4rem;
+  margin-right: var(--mediumMargin);
 }
 
 .btn__delete {
