@@ -66,6 +66,7 @@
 
 .add-activity__option .add-activity__option__container {
   align-items: center;
+  text-align: center;
   background-color: var(--whiteColor);
   border-radius: var(--borderRadius);
   box-shadow: 0 .2rem 1rem var(--shadowColor);
@@ -285,6 +286,8 @@
 
   .form {
     width: 60rem;
+    margin: var(--mediumMargin) auto;
+    margin-bottom: 5rem;
   }
 
   .add-activity__options-container {

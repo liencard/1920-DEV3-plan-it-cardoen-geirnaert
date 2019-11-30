@@ -75,7 +75,7 @@ class ActivitiesController extends Controller {
 
       if (isset($_POST['selectType'])){
         $type = $_POST['type'];
-        var_dump($type);
+        //var_dump($type);
         $sports = $this->activityDAO->selectSportsByTypeId($type);
         $this->set('sports', $sports);
       }
