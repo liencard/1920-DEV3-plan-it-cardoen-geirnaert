@@ -28,6 +28,15 @@ class ActivityDAO extends DAO {
     return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
+  public function selectSportsByTypeId($id){
+    $sql = "SELECT * FROM `sports`
+      WHERE `type_id` = :id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   public function selectFocusByActivityId($id){
     $sql = "SELECT * FROM `activities`
         INNER JOIN `activities_have_focuses` ON `activities`.`id` = `activities_have_focuses`.`activity_id`
