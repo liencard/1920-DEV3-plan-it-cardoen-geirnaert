@@ -73,6 +73,13 @@ class ActivitiesController extends Controller {
         $_SESSION['sportFriends'][] = $name;
       }
 
+      if (isset($_POST['selectType'])){
+        $type = $_POST['type'];
+        var_dump($type);
+        $sports = $this->activityDAO->selectSportsByTypeId($type);
+        $this->set('sports', $sports);
+      }
+
       if(isset($_POST['save'])){
         $date = date("Y-m-d", $_POST['day']);
         $selectedFocuses = $_POST['focus'];
@@ -120,7 +127,6 @@ class ActivitiesController extends Controller {
     $this->set('types', $types);
     $this->set('locations', $locations);
     $this->set('focuses', $focuses);
-    $this->set('sports', $sports);
     $this->set('days', $this->getDaysOfNextWeek());
   }
 
