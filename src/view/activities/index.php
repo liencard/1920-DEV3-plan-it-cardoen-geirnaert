@@ -16,7 +16,7 @@
           <?php foreach ($activitiesGroup as $activity): ?>
             <li class="activity">
               <a class="activity__button" href="index.php?page=detail&id=<?php echo $activity['activity_id']; ?>">
-                <?php echo $activity['sport_icon']; ?>
+                <span class="activity__icon"> <?php echo $activity['sport_icon']; ?></span>
                 <span class="activity__button__wrapper">
                   <span class="activity__button__time"><?php echo strftime("%H:%M", strtotime($activity['starthour'])); ?> - <?php echo strftime("%H:%M", strtotime($activity['endhour'])); ?></span>
                   <span class="activity__button__name"><?php echo $activity['sport']; ?></span>

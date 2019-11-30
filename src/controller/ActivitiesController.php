@@ -62,6 +62,11 @@ class ActivitiesController extends Controller {
     $focuses = $this->activityDAO->selectAllFocuses();
     $sports = $this->activityDAO->selectAllSports();
 
+    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //   $_SESSION['formData'] = $_POST;
+    //   //unset($_POST);
+    // }
+
     if (!empty($_POST['action']) && $_POST['action'] == 'newActivity'){
       if (isset($_POST['addFriend'])){
         $name = $_POST['nameFriend'];
@@ -70,7 +75,7 @@ class ActivitiesController extends Controller {
 
       if (isset($_POST['selectType'])){
         $type = $_POST['type'];
-        var_dump($type);
+        //var_dump($type);
         $sports = $this->activityDAO->selectSportsByTypeId($type);
         $this->set('sports', $sports);
       }
@@ -117,11 +122,6 @@ class ActivitiesController extends Controller {
       }
 
     }
-
-    // if (!empty($_GET['action']) && $_GET['action'] == 'delete_activity') {
-    //   $activityDAO->delete($_GET['id']);
-    //   header('Location:index.php');
-    // }
 
     $this->set('title', 'Add activity');
     $this->set('types', $types);

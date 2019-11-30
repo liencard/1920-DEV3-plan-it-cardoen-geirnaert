@@ -45,7 +45,7 @@ body {
   .layout {
     border-radius: var(--layoutBorderRadius) 0 0 var(--layoutBorderRadius);
     display: flex;
-    height: 100vh;
+    /* height: 100vh; */
     margin: 0 0 0 25rem;
     overflow-y: scroll;
   }

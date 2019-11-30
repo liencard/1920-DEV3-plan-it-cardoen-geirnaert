@@ -14,7 +14,9 @@
       <div class="add-activity__options-container">
         <?php foreach ($types as $type): ?>
           <label class="add-activity__option add-activity__option--square">
-            <input type="radio" name="type" value="<?php echo $type['id']; ?>">
+            <input type="radio" name="type" value="<?php echo $type['id'] ?>">
+
+            <!-- NOG BEKIJKEN -->
             <div class="add-activity__option__container">
               <?php echo $type['icon']; ?>
               <p><?php echo $type['name'] ?></p>
