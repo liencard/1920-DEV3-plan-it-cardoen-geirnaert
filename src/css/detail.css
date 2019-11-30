@@ -142,10 +142,10 @@
 
 .btn__detail {
   background-color: inherit;
-  border: .2rem solid var(--darkPurpleColor);
+  border: .2rem solid var(--purpleColor);
   border-radius: 3rem;
   padding: 1rem 5rem;
-  color: var(--darkPurpleColor);
+  color: var(--purpleColor);
   text-decoration: none;
   font-size: 1.6rem;
   font-weight: var(--fontWeightSemiBold);
@@ -153,9 +153,10 @@
 }
 
 .btn__edit {
-  border: .2rem solid var(--darkPurpleColor);
-  color: var(--darkPurpleColor);
-  margin-right: var(--mediumMargin);
+  border: .2rem solid var(--purpleColor);
+  color: var(--purpleColor);
+  margin: 0 var(--mediumMargin) var(--mediumMargin) 0;
+  max-width: 30rem;
 }
 
 .btn__delete {

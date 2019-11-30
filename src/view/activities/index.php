@@ -5,7 +5,7 @@
   <?php if (count($sortedActivities) >= 1): ?>
 
     <?php foreach ($sortedActivities as $date => $activitiesGroup): ?>
-      <?php if($date == date("Y/m/d")): ?>
+      <?php if ($date == date("Y/m/d")): ?>
         <h3 class="activities__day">Today</h3>
       <?php else: ?>
         <h3 class="activities__day"><?php echo strftime("%a %d %B", strtotime($date)); ?></h3>
