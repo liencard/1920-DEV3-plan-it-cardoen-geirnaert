@@ -35,7 +35,7 @@
       <button type="submit" class="btn" name="selectType">Select sport</button>
     </section>
 
-    <?php if (!empty($sports)): ?>
+    <?php if (!empty($sports) || !empty($_SESSION['newActivity']['sport_id'])): ?>
       <section class="form__item form__item--sport">
         <h3 class="form__label">Choose your sport</h3>
 
@@ -44,20 +44,37 @@
         <?php endif; ?>
 
         <div class="form__item__options">
-          <?php foreach ($sports as $sport): ?>
-            <label class="options__item">
-              <?php if (!empty($_SESSION['newActivity']['sport_id']) && $_SESSION['newActivity']['sport_id'] == $sport['id']): ?>
-                <input type="radio" class="options__item__input" name="type" value="<?php echo $sport['id'] ?>" checked>
-              <?php else: ?>
-                <input type="radio" class="options__item__input" name="type" value="<?php echo $sport['id'] ?>">
-              <?php endif; ?>
+          <?php if (!empty($sports)): ?>
+            <?php foreach ($sports as $sport): ?>
+              <label class="options__item">
+                <?php if (!empty($_SESSION['newActivity']['sport_id']) && $_SESSION['newActivity']['sport_id'] == $sport['id']): ?>
+                  <input type="radio" class="options__item__input" name="sport" value="<?php echo $sport['id'] ?>" checked>
+                <?php else: ?>
+                  <input type="radio" class="options__item__input" name="sport" value="<?php echo $sport['id'] ?>">
+                <?php endif; ?>
 
-              <div class="options__item__wrapper">
-                <?php echo $sport['icon']; ?>
-                <p class="options__item__p"><?php echo $sport['sport']; ?></p>
-              </div>
-            </label>
-          <?php endforeach; ?>
+                <div class="options__item__wrapper">
+                  <?php echo $sport['icon']; ?>
+                  <p class="options__item__p"><?php echo $sport['sport']; ?></p>
+                </div>
+              </label>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <?php foreach ($_SESSION['newActivity']['sports'] as $sport): ?>
+              <label class="options__item">
+                <?php if (!empty($_SESSION['newActivity']['sport_id']) && $_SESSION['newActivity']['sport_id'] == $sport['id']): ?>
+                  <input type="radio" class="options__item__input" name="sport" value="<?php echo $sport['id'] ?>" checked>
+                <?php else: ?>
+                  <input type="radio" class="options__item__input" name="sport" value="<?php echo $sport['id'] ?>">
+                <?php endif; ?>
+
+                <div class="options__item__wrapper">
+                  <?php echo $sport['icon']; ?>
+                  <p class="options__item__p"><?php echo $sport['sport']; ?></p>
+                </div>
+              </label>
+            <?php endforeach; ?>
+          <?php endif; ?>
         </div>
       </section>
 
@@ -71,7 +88,7 @@
         <div class="form__item__options">
           <?php foreach ($days as $day): ?>
             <label class="options__item">
-              <?php if (!empty($_SESSION['newActivity']['day']) && $_SESSION['newActivity']['day'] == $day['id']): ?>
+              <?php if (!empty($_SESSION['newActivity']['day']) && $_SESSION['newActivity']['day'] == $day): ?>
                 <input type="radio" class="options__item__input" name="date" value="<?php echo $day ?>" checked>
               <?php else: ?>
                 <input type="radio" class="options__item__input" name="date" value="<?php echo $day ?>">
@@ -95,7 +112,11 @@
 
         <div class="form__item__options">
           <label class="options__item options__item--time">
-            <input type="time" name="starthour" class="input-time" value="13:30">
+            <?php if (!empty($_SESSION['newActivity']['starthour'])): ?>
+              <input type="time" name="starthour" class="input-time" value="<?php echo $_SESSION['newActivity']['starthour'] ?>">
+            <?php else: ?>
+              <input type="time" name="starthour" class="input-time" value="13:30">
+            <?php endif; ?>
           </label>
         </div>
       </section>
@@ -110,7 +131,13 @@
         <div class="form__item__options options__item--duration">
           <div class="duration-slider">
             <span class="ds-label">0</span>
-            <input type="range" name="duration"  min="0" max="12" value="<?php if (!empty($_SESSION['newActivity']['duration'])) { echo $_SESSION['newActivity']['duration']; } ?>" class="ds-range" id="durationTime">
+
+            <?php if (!empty($_SESSION['newActivity']['duration'])): ?>
+              <input type="range" name="duration"  min="0" max="12" value="<?php echo $_SESSION['newActivity']['duration'] ?>" class="ds-range" id="durationTime">
+            <?php else: ?>
+              <input type="range" name="duration"  min="0" max="12" value="0" class="ds-range" id="durationTime">
+            <?php endif; ?>
+
           </div>
           <div class="duration-minmax">
             <span>0h</span>
@@ -134,7 +161,12 @@
         <div class="form__item__options">
           <?php foreach ($locations as $location): ?>
             <label class="options__item">
-              <input type="radio" class="options__item__input" name="location" value="<?php echo $location['id'] ?>" <?php if (!empty($_SESSION['newActivity']['location_id']) && $_SESSION['newActivity']['location_id'] == $location['id']) { echo "checked"; } ?> >
+              <?php if (!empty($_SESSION['newActivity']['location_id']) && $_SESSION['newActivity']['location_id'] == $location['id']): ?>
+                <input type="radio" class="options__item__input" name="location" value="<?php echo $location['id'] ?>" checked>
+              <?php else: ?>
+                <input type="radio" class="options__item__input" name="location" value="<?php echo $location['id'] ?>">
+              <?php endif; ?>
+
               <div class="options__item__wrapper">
                 <?php echo $location['icon']; ?>
                 <p class="options__item__p"><?php echo $location['location'] ?></p>
@@ -174,43 +206,58 @@
 
         <div class="form__item__options">
           <label class="options__item">
-            <input type="radio" class="options__item__input" name="intensity" value="light">
-              <div class="options__item__wrapper">
-                <svg width="41" height="22" viewBox="0 0 41 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g clip-path="url(#clip0)">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M0 3C0 1.34772 1.34772 0 3 0H6.5C8.15228 0 9.5 1.34772 9.5 3V6.4C9.5 6.49656 9.5402 6.59304 9.62716 6.67586C9.72102 6.76526 9.82972 6.8 9.9 6.8H30.4C30.4966 6.8 30.593 6.75981 30.6759 6.67285C30.7653 6.57898 30.8 6.47028 30.8 6.4V3C30.8 1.34772 32.1477 0 33.8 0H37.4C39.0782 0 40.3156 1.34557 40.5839 2.82111L40.6 2.90983V18.1C40.6 19.7523 39.2523 21.1 37.6 21.1H34C32.3477 21.1 31 19.7523 31 18.1V14.7C31 14.6034 30.9598 14.507 30.8728 14.4241C30.779 14.3347 30.6703 14.3 30.6 14.3H10C9.90344 14.3 9.80696 14.3402 9.72414 14.4272C9.63474 14.521 9.6 14.6297 9.6 14.7V18.1C9.6 19.7523 8.25228 21.1 6.6 21.1H3C1.34772 21.1 0 19.7523 0 18.1V3ZM3 2C2.45228 2 2 2.45228 2 3V18.1C2 18.6477 2.45228 19.1 3 19.1H6.6C7.14772 19.1 7.6 18.6477 7.6 18.1V14.7C7.6 13.4943 8.6023 12.3 10 12.3H30.6C31.8057 12.3 33 13.3023 33 14.7V18.1C33 18.6477 33.4523 19.1 34 19.1H37.6C38.1477 19.1 38.6 18.6477 38.6 18.1V3.10062C38.4434 2.42185 37.9027 2 37.4 2H33.8C33.2523 2 32.8 2.45228 32.8 3V6.4C32.8 7.60575 31.7977 8.8 30.4 8.8H9.9C8.69425 8.8 7.5 7.7977 7.5 6.4V3C7.5 2.45228 7.04772 2 6.5 2H3Z" fill="#ECEDF6"/>
-                  </g>
-                  <defs>
-                  <clipPath id="clip0">
-                  <rect width="40.4" height="21.1" fill="white"/>
-                  </clipPath>
-                  </defs>
-                </svg>
-                <p class="options__item__p">light</p>
-              </div>
+            <?php if (!empty($_SESSION['newActivity']['intensity']) && $_SESSION['newActivity']['intensity'] == 'light'): ?>
+              <input type="radio" class="options__item__input" name="intensity" value="light" checked>
+            <?php else: ?>
+              <input type="radio" class="options__item__input" name="intensity" value="light">
+            <?php endif; ?>
+
+            <div class="options__item__wrapper">
+              <svg width="41" height="22" viewBox="0 0 41 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0)">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 3C0 1.34772 1.34772 0 3 0H6.5C8.15228 0 9.5 1.34772 9.5 3V6.4C9.5 6.49656 9.5402 6.59304 9.62716 6.67586C9.72102 6.76526 9.82972 6.8 9.9 6.8H30.4C30.4966 6.8 30.593 6.75981 30.6759 6.67285C30.7653 6.57898 30.8 6.47028 30.8 6.4V3C30.8 1.34772 32.1477 0 33.8 0H37.4C39.0782 0 40.3156 1.34557 40.5839 2.82111L40.6 2.90983V18.1C40.6 19.7523 39.2523 21.1 37.6 21.1H34C32.3477 21.1 31 19.7523 31 18.1V14.7C31 14.6034 30.9598 14.507 30.8728 14.4241C30.779 14.3347 30.6703 14.3 30.6 14.3H10C9.90344 14.3 9.80696 14.3402 9.72414 14.4272C9.63474 14.521 9.6 14.6297 9.6 14.7V18.1C9.6 19.7523 8.25228 21.1 6.6 21.1H3C1.34772 21.1 0 19.7523 0 18.1V3ZM3 2C2.45228 2 2 2.45228 2 3V18.1C2 18.6477 2.45228 19.1 3 19.1H6.6C7.14772 19.1 7.6 18.6477 7.6 18.1V14.7C7.6 13.4943 8.6023 12.3 10 12.3H30.6C31.8057 12.3 33 13.3023 33 14.7V18.1C33 18.6477 33.4523 19.1 34 19.1H37.6C38.1477 19.1 38.6 18.6477 38.6 18.1V3.10062C38.4434 2.42185 37.9027 2 37.4 2H33.8C33.2523 2 32.8 2.45228 32.8 3V6.4C32.8 7.60575 31.7977 8.8 30.4 8.8H9.9C8.69425 8.8 7.5 7.7977 7.5 6.4V3C7.5 2.45228 7.04772 2 6.5 2H3Z" fill="#ECEDF6"/>
+                </g>
+                <defs>
+                <clipPath id="clip0">
+                <rect width="40.4" height="21.1" fill="white"/>
+                </clipPath>
+                </defs>
+              </svg>
+              <p class="options__item__p">light</p>
+            </div>
           </label>
           <label class="options__item">
-            <input type="radio" class="options__item__input" name="intensity" value="medium" checked>
-              <div class="options__item__wrapper">
-                <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g clip-path="url(#clip0)">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5 25.9535C18.76 25.9535 17.3436 27.3698 17.3436 29.1242C17.3436 30.8786 18.76 32.2949 20.5 32.2949C22.24 32.2949 23.6563 30.8786 23.6563 29.1242C23.6563 27.3698 22.24 25.9535 20.5 25.9535ZM15.3436 29.1242C15.3436 26.2717 17.649 23.9535 20.5 23.9535C23.351 23.9535 25.6563 26.2717 25.6563 29.1242C25.6563 31.9766 23.351 34.2949 20.5 34.2949C17.649 34.2949 15.3436 31.9766 15.3436 29.1242Z" fill="#ECEDF6"/>
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.3115 12.9984C30.2518 12.3263 39.323 21.064 39.323 31.881C39.323 34.2006 38.8758 36.365 38.137 38.3691C37.4943 40.2002 35.8344 41.2931 33.9553 41.2931H7.04466C5.16136 41.2931 3.43786 40.1267 2.79494 38.3756L2.79023 38.3628L2.79032 38.3628C1.90278 35.8394 1.45488 33.0079 1.75182 30.0198C2.57385 20.8258 10.1631 13.5954 19.3077 12.9986L19.3115 12.9984ZM19.4361 14.9945C11.2534 15.5295 4.47362 22.0099 3.74346 30.2025L3.74254 30.2129L3.74248 30.2129C3.47715 32.8754 3.87353 35.412 4.67457 37.6922C5.01975 38.6243 5.97147 39.2931 7.04466 39.2931H33.9553C35.032 39.2931 35.9059 38.6929 36.2516 37.7016L36.2546 37.6932L36.2577 37.6847C36.9261 35.8739 37.323 33.941 37.323 31.881C37.323 22.1986 29.2062 14.3953 19.4361 14.9945Z" fill="#ECEDF6"/>
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M2.02564 5.9231C2.02608 5.92401 2.02652 5.92492 2.02697 5.92583L8.50519 19.0682L6.71129 19.9525L0.227294 6.79834C-1.36064 3.52301 1.01833 -0.293091 4.64948 -0.293091H4.65171L36.3505 -0.222401C36.3509 -0.222401 36.3513 -0.222401 36.3517 -0.222401" fill="#ECEDF6"/>
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8472 6.79651C9.85874 6.79767 9.174 7.89827 9.63045 8.81432L9.63233 8.81809L9.63232 8.81809L12.9433 15.5336L11.1495 16.418L7.84037 9.70629C7.84003 9.7056 7.83969 9.70491 7.83935 9.70423C6.74822 7.51078 8.31661 4.79651 10.8488 4.79651H10.8525V4.79652L30.1512 4.8672C30.1519 4.8672 30.1525 4.8672 30.1532 4.8672C32.6841 4.86857 34.2427 7.50491 33.1673 9.76124L33.1616 9.77332L33.1615 9.77328L29.78 16.6302L27.9863 15.7456L31.3644 8.89542C31.8336 7.90223 31.1397 6.8672 30.1512 6.8672L30.1476 6.86719L10.8488 6.79651C10.8483 6.79651 10.8478 6.79651 10.8472 6.79651Z" fill="#ECEDF6"/>
-                  </g>
-                  <defs>
-                  <clipPath id="clip0">
-                  <rect width="41" height="41" fill="white"/>
-                  </clipPath>
-                  </defs>
-                </svg>
-                <p class="options__item__p">medium</p>
-              </div>
+            <?php if (!empty($_SESSION['newActivity']['intensity']) && $_SESSION['newActivity']['intensity'] == 'medium'): ?>
+              <input type="radio" class="options__item__input" name="intensity" value="medium" checked>
+            <?php else: ?>
+              <input type="radio" class="options__item__input" name="intensity" value="medium">
+            <?php endif; ?>
+
+            <div class="options__item__wrapper">
+              <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0)">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5 25.9535C18.76 25.9535 17.3436 27.3698 17.3436 29.1242C17.3436 30.8786 18.76 32.2949 20.5 32.2949C22.24 32.2949 23.6563 30.8786 23.6563 29.1242C23.6563 27.3698 22.24 25.9535 20.5 25.9535ZM15.3436 29.1242C15.3436 26.2717 17.649 23.9535 20.5 23.9535C23.351 23.9535 25.6563 26.2717 25.6563 29.1242C25.6563 31.9766 23.351 34.2949 20.5 34.2949C17.649 34.2949 15.3436 31.9766 15.3436 29.1242Z" fill="#ECEDF6"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M19.3115 12.9984C30.2518 12.3263 39.323 21.064 39.323 31.881C39.323 34.2006 38.8758 36.365 38.137 38.3691C37.4943 40.2002 35.8344 41.2931 33.9553 41.2931H7.04466C5.16136 41.2931 3.43786 40.1267 2.79494 38.3756L2.79023 38.3628L2.79032 38.3628C1.90278 35.8394 1.45488 33.0079 1.75182 30.0198C2.57385 20.8258 10.1631 13.5954 19.3077 12.9986L19.3115 12.9984ZM19.4361 14.9945C11.2534 15.5295 4.47362 22.0099 3.74346 30.2025L3.74254 30.2129L3.74248 30.2129C3.47715 32.8754 3.87353 35.412 4.67457 37.6922C5.01975 38.6243 5.97147 39.2931 7.04466 39.2931H33.9553C35.032 39.2931 35.9059 38.6929 36.2516 37.7016L36.2546 37.6932L36.2577 37.6847C36.9261 35.8739 37.323 33.941 37.323 31.881C37.323 22.1986 29.2062 14.3953 19.4361 14.9945Z" fill="#ECEDF6"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.02564 5.9231C2.02608 5.92401 2.02652 5.92492 2.02697 5.92583L8.50519 19.0682L6.71129 19.9525L0.227294 6.79834C-1.36064 3.52301 1.01833 -0.293091 4.64948 -0.293091H4.65171L36.3505 -0.222401C36.3509 -0.222401 36.3513 -0.222401 36.3517 -0.222401" fill="#ECEDF6"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8472 6.79651C9.85874 6.79767 9.174 7.89827 9.63045 8.81432L9.63233 8.81809L9.63232 8.81809L12.9433 15.5336L11.1495 16.418L7.84037 9.70629C7.84003 9.7056 7.83969 9.70491 7.83935 9.70423C6.74822 7.51078 8.31661 4.79651 10.8488 4.79651H10.8525V4.79652L30.1512 4.8672C30.1519 4.8672 30.1525 4.8672 30.1532 4.8672C32.6841 4.86857 34.2427 7.50491 33.1673 9.76124L33.1616 9.77332L33.1615 9.77328L29.78 16.6302L27.9863 15.7456L31.3644 8.89542C31.8336 7.90223 31.1397 6.8672 30.1512 6.8672L30.1476 6.86719L10.8488 6.79651C10.8483 6.79651 10.8478 6.79651 10.8472 6.79651Z" fill="#ECEDF6"/>
+                </g>
+                <defs>
+                <clipPath id="clip0">
+                <rect width="41" height="41" fill="white"/>
+                </clipPath>
+                </defs>
+              </svg>
+              <p class="options__item__p">medium</p>
+            </div>
           </label>
           <label class="options__item">
-            <input type="radio" class="options__item__input" name="intensity" value="hard">
-             <div class="options__item__wrapper">
+            <?php if (!empty($_SESSION['newActivity']['intensity']) && $_SESSION['newActivity']['intensity'] == 'hard'): ?>
+              <input type="radio" class="options__item__input" name="intensity" value="hard" checked>
+            <?php else: ?>
+              <input type="radio" class="options__item__input" name="intensity" value="hard">
+            <?php endif; ?>
+
+            <div class="options__item__wrapper">
               <svg width="68" height="29" viewBox="0 0 68 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0)">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0566 11.3325H52.0188V17.5928H16.0566V11.3325ZM18.0566 13.3325V15.5928H50.0188V13.3325H18.0566Z" fill="#ECEDF6"/>

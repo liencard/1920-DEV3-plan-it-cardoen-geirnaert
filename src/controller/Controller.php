@@ -24,12 +24,19 @@ class Controller {
     }
     $this->createViewVarWithContent();
     $this->renderInLayout();
+
     if (!empty($_SESSION['info'])) {
       unset($_SESSION['info']);
     }
+
     if (!empty($_SESSION['error'])) {
       unset($_SESSION['error']);
     }
+
+    if (!empty($_SESSION['newActivity'])) {
+      unset($_SESSION['newActivity']);
+    }
+
     // unset($_SESSION['sportFriends']);
 
     if (!isset($_SESSION['sportFriends'])) {
