@@ -18,7 +18,8 @@
   border: 4px solid var(--purpleColor);
   border-radius: var(--borderRadius);
   margin-top: 2rem;
-  width: 60rem;
+  max-width: 60rem;
+  width: 100%;
   -webkit-appearance: none;
 
   &:focus {
@@ -50,6 +51,10 @@
   }
 }
 
+.duration-slider {
+  width: 100%;
+}
+
 .ds-label {
   position: relative;
   transform-origin: center center;
@@ -63,7 +68,7 @@
   padding-top: 1rem;
   border: .1rem solid var(--orangeColor);
   margin-left: -1rem;
-  left: attr(value);
+  left: calc((100% - 5rem) / 2);
   color: var(--orangeColor);
   font-size: 2rem;
 

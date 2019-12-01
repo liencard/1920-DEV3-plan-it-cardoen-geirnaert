@@ -170,9 +170,10 @@
 
 .friends__label {
   border-bottom: .2rem solid var(--purpleColor);
-  padding-bottom: 1rem;
+  color: var(--purpleColor);
   font-size: 1.2rem;
-  margin-right: var(--mediumMargin);
+  margin: 0 var(--mediumMargin) var(--smallMargin) 0;
+  padding-bottom: 1rem;
 }
 
 .friends__label input {
@@ -182,6 +183,7 @@
 
 .friends__label__wrapper {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 2rem;
 }
 
@@ -221,7 +223,7 @@
 .form__item--focus .options__item__wrapper {
   height: 5rem;
   max-width: 25rem;
-  width: 40vw;
+  width: 90vw;
 }
 
 .form__item--focus .options__item__p {
@@ -253,6 +255,13 @@
   fill: var(--purpleColor);
 }
 
+@media screen and (min-width: 400px) {
+
+  .form__item--focus .options__item__wrapper {
+    width: 39vw;
+  }
+}
+
 @media screen and (min-width: 650px) {
 
   .addactivity {
@@ -264,9 +273,9 @@
 @media screen and (min-width: 750px) {
 
   .addactivity {
-    width: 60rem;
     margin: var(--mediumMargin) auto;
     margin-bottom: 5rem;
+    width: 40rem;
   }
 
   .form__item__wrapper {
@@ -277,4 +286,11 @@
     justify-content: flex-start;
   }
 
+}
+
+@media screen and (min-width: 1000px) {
+
+  .addactivity {
+    width: 60rem;
+  }
 }
