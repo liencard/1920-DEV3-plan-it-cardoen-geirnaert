@@ -68,19 +68,31 @@ class ActivitiesController extends Controller {
     // }
 
     if (!empty($_POST['action']) && $_POST['action'] == 'newActivity'){
-      if (isset($_POST['addFriend'])){
-        $name = $_POST['nameFriend'];
-        $_SESSION['sportFriends'][] = $name;
-      }
 
       if (isset($_POST['selectType'])){
         $type = $_POST['type'];
         $sports = $this->activityDAO->selectSportsByTypeId($type);
+        $_SESSION['newActivity']['type_id'] = $type;
         $this->set('sports', $sports);
       }
 
+      if (isset($_POST['addFriend'])){
+        $name = $_POST['nameFriend'];
+        $_SESSION['sportFriends'][] = $name;
+
+        var_dump($_POST);
+
+        $_SESSION['newActivity']['type_id'] = $_POST['type'];
+        $_SESSION['newActivity']['sport_id'] = $_POST['sport'];
+        $_SESSION['newActivity']['date'] = $_POST['date'];
+        $_SESSION['newActivity']['starthour'] = $_POST['starthour'];
+        $_SESSION['newActivity']['duration'] = $_POST['duration'];
+        $_SESSION['newActivity']['location_id'] = $_POST['location'];
+
+      }
+
       if(isset($_POST['save'])){
-        $date = date("Y-m-d", $_POST['day']);
+        $date = date("Y-m-d", $_POST['date']);
         $selectedFocuses = $_POST['focus'];
         $selectedFriends = $_SESSION['sportFriends'];
 
@@ -147,6 +159,10 @@ class ActivitiesController extends Controller {
     $this->set('types', $types);
     $this->set('locations', $locations);
     $this->set('focuses', $focuses);
+  }
+
+  private function _saveDataToSession() {
+
   }
 
   private function _handleRemove() {

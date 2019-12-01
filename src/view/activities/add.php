@@ -11,11 +11,20 @@
 
     <section class="form__item form__item--type">
       <h3 class="form__label">Choose your type of sport</h3>
-      <span class="form__errors <?php if(empty($errors['sport'])){ echo "hidden" ; } ?>"><?php if(!empty($errors['sport'])){ echo $errors['sport'];} ?></span>
+
+      <?php if (!empty($errors['type'])): ?>
+        <span class="form__errors"><?php echo $errors['type'] ?></span>
+      <?php endif; ?>
+
       <div class="form__item__options">
         <?php foreach ($types as $type): ?>
           <label class="options__item">
-            <input type="radio" class="options__item__input" name="type" value="<?php echo $type['id'] ?>">
+            <?php if (!empty($_SESSION['newActivity']['type_id']) && $_SESSION['newActivity']['type_id'] == $type['id']): ?>
+              <input type="radio" class="options__item__input" name="type" value="<?php echo $type['id'] ?>" checked>
+            <?php else: ?>
+              <input type="radio" class="options__item__input" name="type" value="<?php echo $type['id'] ?>">
+            <?php endif; ?>
+
             <div class="options__item__wrapper">
               <?php echo $type['icon']; ?>
               <p class="options__item__p"><?php echo $type['name'] ?></p>
@@ -29,11 +38,20 @@
     <?php if (!empty($sports)): ?>
       <section class="form__item form__item--sport">
         <h3 class="form__label">Choose your sport</h3>
-        <span class="form__errors <?php if(empty($errors['sport'])){ echo "hidden" ; } ?>"><?php if(!empty($errors['sport'])){ echo $errors['sport'];} ?></span>
+
+        <?php if (!empty($errors['sport'])): ?>
+          <span class="form__errors"><?php echo $errors['sport'] ?></span>
+        <?php endif; ?>
+
         <div class="form__item__options">
           <?php foreach ($sports as $sport): ?>
             <label class="options__item">
-              <input type="radio" class="options__item__input" name="sport" value="<?php echo $sport['id']; ?>">
+              <?php if (!empty($_SESSION['newActivity']['sport_id']) && $_SESSION['newActivity']['sport_id'] == $sport['id']): ?>
+                <input type="radio" class="options__item__input" name="type" value="<?php echo $sport['id'] ?>" checked>
+              <?php else: ?>
+                <input type="radio" class="options__item__input" name="type" value="<?php echo $sport['id'] ?>">
+              <?php endif; ?>
+
               <div class="options__item__wrapper">
                 <?php echo $sport['icon']; ?>
                 <p class="options__item__p"><?php echo $sport['sport']; ?></p>
@@ -45,11 +63,20 @@
 
       <section class="form__item form__item--date">
         <h3 class="form__label">When do you want to sport?</h3>
-        <span class="form__errors <?php if(empty($errors['day'])){ echo "hidden" ; } ?>"><?php if(!empty($errors['day'])){ echo $errors['day'];} ?></span>
+
+        <?php if (!empty($errors['day'])): ?>
+          <span class="form__errors"><?php echo $errors['day'] ?></span>
+        <?php endif; ?>
+
         <div class="form__item__options">
           <?php foreach ($days as $day): ?>
             <label class="options__item">
-              <input type="radio" class="options__item__input" name="day" value="<?php echo $day; ?>">
+              <?php if (!empty($_SESSION['newActivity']['day']) && $_SESSION['newActivity']['day'] == $day['id']): ?>
+                <input type="radio" class="options__item__input" name="date" value="<?php echo $day ?>" checked>
+              <?php else: ?>
+                <input type="radio" class="options__item__input" name="date" value="<?php echo $day ?>">
+              <?php endif; ?>
+
               <div class="options__item__wrapper">
                 <p class="options__item__p options__item__p--largedate"><?php echo date("j", $day); ?></>
                 <p class="options__item__p"><?php echo date("D", $day)?></p>
@@ -61,7 +88,11 @@
 
       <section class="form__item form__item--starthour">
         <h3 class="form__label">What time will you start?</h3>
-        <span class="form__errors <?php if(empty($errors['starthour'])){ echo "hidden" ; } ?>"><?php if(!empty($errors['starthour'])){ echo $errors['starthour'];} ?></span>
+
+        <?php if (!empty($errors['starthour'])): ?>
+          <span class="form__errors"><?php echo $errors['starthour'] ?></span>
+        <?php endif; ?>
+
         <div class="form__item__options">
           <label class="options__item options__item--time">
             <input type="time" name="starthour" class="input-time" value="13:30">
@@ -71,11 +102,15 @@
 
       <section class="form__item form__item--duration">
         <h3 class="form__label">How long will you sport?</h3>
-        <span class="form__errors <?php if(empty($errors['endhour'])){ echo "hidden" ; } ?>"><?php if(!empty($errors['endhour'])){ echo $errors['endhour'];} ?></span>
+
+        <?php if (!empty($errors['duration'])): ?>
+          <span class="form__errors"><?php echo $errors['duration'] ?></span>
+        <?php endif; ?>
+
         <div class="form__item__options options__item--duration">
           <div class="duration-slider">
             <span class="ds-label">0</span>
-            <input type="range" name="duration"  min="0" max="12" value="0" class="ds-range" id="durationTime">
+            <input type="range" name="duration"  min="0" max="12" value="<?php if (!empty($_SESSION['newActivity']['duration'])) { echo $_SESSION['newActivity']['duration']; } ?>" class="ds-range" id="durationTime">
           </div>
           <div class="duration-minmax">
             <span>0h</span>
@@ -91,11 +126,15 @@
 
       <section class="form__item form__item--location">
         <h3 class="form__label">Where will you sport?</h3>
-        <span class="form__errors <?php if(empty($errors['location'])){ echo "hidden" ; } ?>"><?php if(!empty($errors['location'])){ echo $errors['location'];} ?></span>
+
+        <?php if (!empty($errors['location'])): ?>
+          <span class="form__errors"><?php echo $errors['location'] ?></span>
+        <?php endif; ?>
+
         <div class="form__item__options">
           <?php foreach ($locations as $location): ?>
             <label class="options__item">
-              <input type="radio" class="options__item__input" name="location" value="<?php echo $location['id'] ?>">
+              <input type="radio" class="options__item__input" name="location" value="<?php echo $location['id'] ?>" <?php if (!empty($_SESSION['newActivity']['location_id']) && $_SESSION['newActivity']['location_id'] == $location['id']) { echo "checked"; } ?> >
               <div class="options__item__wrapper">
                 <?php echo $location['icon']; ?>
                 <p class="options__item__p"><?php echo $location['location'] ?></p>
@@ -107,7 +146,7 @@
 
       <section class="form__item form__item--friends">
         <h3 class="form__label">Who will you take with you?</h3>
-        <span class="form__errors <?php if(empty($errors['friends'])){ echo "hidden" ; } ?>"><?php if(!empty($errors['location'])){ echo $errors['location'];} ?></span>
+
         <div class="friends__bubbles__wrapper">
           <?php foreach($_SESSION['sportFriends'] as $friend)
             { ?>
@@ -128,7 +167,11 @@
 
       <section class="form__item form__item--intensity">
         <h3 class="form__label">What will be the intensity of your sport?</h3>
-        <span class="form__errors <?php if(empty($errors['intensity'])){ echo "hidden" ; } ?>"><?php if(!empty($errors['intensity'])){ echo $errors['intensity'];} ?></span>
+
+        <?php if (!empty($errors['intensity'])): ?>
+          <span class="form__errors"><?php echo $errors['intensity'] ?></span>
+        <?php endif; ?>
+
         <div class="form__item__options">
           <label class="options__item">
             <input type="radio" class="options__item__input" name="intensity" value="light">
@@ -192,7 +235,11 @@
 
       <section class="form__item form__item--focus">
         <h3 class="form__label">Which items do you want to focus on?</h3>
-        <span class="form__errors"><?php if(!empty($errors['location'])){ echo $errors['location'];} ?></span>
+
+        <?php if (!empty($errors['focus'])): ?>
+          <span class="form__errors"><?php echo $errors['focus'] ?></span>
+        <?php endif; ?>
+
         <div class="form__item__options">
           <?php foreach ($focuses as $focus): ?>
             <label class="options__item">
