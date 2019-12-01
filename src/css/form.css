@@ -75,6 +75,10 @@
   width: 13.5rem;
 }
 
+.has-js .btn__type {
+  display: none;
+}
+
 /* sport */
 .form__item--sport .form__item__options {
   justify-content: flex-start;

@@ -1,5 +1,6 @@
 require('./style.css');
 require('./js/validate.js');
+require('./js/activities.js');
 
 {
   const showSliderValue = () => {
@@ -22,6 +23,8 @@ require('./js/validate.js');
   // };
 
   const init = () => {
+    document.documentElement.classList.add('has-js');
+
     const $rangeSlider = document.querySelector('.ds-range');
     if ($rangeSlider) {
       $rangeSlider.addEventListener('input', showSliderValue());
