@@ -95,7 +95,7 @@
   font-weight: var(--fontWeightBold);
   color: var(--purpleColor);
   font-size: 1.4rem;
-  margin-top: var(--mediumMargin);
+  margin-top: var(--smallMargin);
 }
 
 .intensity__wrapper--light {

@@ -141,6 +141,9 @@ class ActivityDAO extends DAO {
 
   public function validateActivity($data){
     $errors = [];
+    // if (!isset($data['type_id']) || empty($data['type_id'])) {
+    //   $errors['type'] = 'Please select a sport type for your activity';
+    // }
     if (!isset($data['sport_id']) || empty($data['sport_id'])) {
       $errors['sport'] = 'Please select a sport for your activity';
     }

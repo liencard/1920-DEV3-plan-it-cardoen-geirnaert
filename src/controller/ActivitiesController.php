@@ -70,6 +70,21 @@ class ActivitiesController extends Controller {
     if (!empty($_POST['action']) && $_POST['action'] == 'newActivity'){
 
       if (isset($_POST['selectType'])){
+        // if(!empty($_POST['type'])){
+        //   $type = $_POST['type'];
+        //   $sports = $this->activityDAO->selectSportsByTypeId($type);
+        //   $this->set('sports', $sports);
+        // } else {
+        //   $data = array(
+        //   'type_id' => $_POST
+        //   );
+        //   $errors = $this->activityDAO->validateActivity($data);
+        //   $this->set('errors', $errors);
+        // }
+        //$type = $_POST['type'];
+        //var_dump($type);
+        //$sports = $this->activityDAO->selectSportsByTypeId($type);
+        //$this->set('sports', $sports);
         $type = $_POST['type'];
         $sports = $this->activityDAO->selectSportsByTypeId($type);
         $this->_saveDataToSession($_POST);
