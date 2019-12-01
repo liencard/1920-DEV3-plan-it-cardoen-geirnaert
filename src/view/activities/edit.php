@@ -4,7 +4,7 @@
     <a class="" href="index.php">Back to overview</a>
   </div>
 
-  <h2 class="addactivity__title">Plan a new activity</h2>
+  <h2 class="addactivity__title">Edit activity</h2>
 
   <form action="index.php?page=edit-activity" method="POST" class="addactivity__form">
     <input type="hidden" name="action" value="editActivity">

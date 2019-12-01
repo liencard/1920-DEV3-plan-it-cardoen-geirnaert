@@ -196,7 +196,7 @@ class ActivitiesController extends Controller {
       // }
 
 
-    $this->set('title', 'Add activity');
+    $this->set('title', 'Edit activity');
     $this->set('types', $types);
     $this->set('sports', $sports);
     $this->set('days', $days);
