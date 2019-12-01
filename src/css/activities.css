@@ -35,14 +35,6 @@
   text-decoration: none;
 }
 
-/* .activity__icon {
-  width: 5rem;
-}
-
-.activity__icon svg {
-  width: 5rem;
-} */
-
 .activity__button__wrapper {
   display: flex;
   flex-direction: column;

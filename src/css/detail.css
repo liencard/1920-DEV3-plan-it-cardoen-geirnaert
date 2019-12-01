@@ -155,7 +155,7 @@
   background-color: inherit;
   border: .2rem solid var(--purpleColor);
   border-radius: 3rem;
-  padding: 1rem 5rem;
+  padding: .7rem 3rem;
   color: var(--purpleColor);
   text-decoration: none;
   font-size: 1.6rem;
@@ -180,4 +180,9 @@
   .detail__wrapper {
     margin: 0 auto;
   }
+
+  .btn__detail {
+    padding: 1rem 5rem;
+  }
+
 }

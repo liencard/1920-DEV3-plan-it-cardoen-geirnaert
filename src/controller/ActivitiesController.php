@@ -156,18 +156,45 @@ class ActivitiesController extends Controller {
       $friends = $this->activityDAO->selectFriendByActivityId($_GET['id']);
     }
 
+    //var_dump($activity);
 
-    $data = array(
-      'type' => $activity['type_id'],
-      'sport' => $activity['sport_id'],
-      'date' => $activity['date'],
-      'starthour' => $activity['starthour'],
-      // 'duration' => $_POST['location'],
-      // 'location' => $_POST['intensity'],
-      // 'intensity' => date('Y-m-d H:i:s'),
-    );
+        $data = array(
+          'type' => $activity['type_id'],
+          'sport' => $activity['sport_id'],
+          'date' => $activity['date'],
+          'starthour' => $activity['starthour'],
+          // 'duration' => $_POST['location'],
+          'location' => $_POST['intensity'],
+          'intensity' => date('Y-m-d H:i:s'),
+        );
 
-    $this->_saveDataToSession($data);
+        $this->_saveDataToSession($data);
+
+      // if (!empty($_POST['action']) && $_POST['action'] == 'editActivity'){
+      //   if(isset($_POST['update'])){
+
+      //   $updatedActivity = $this->activityDAO->updateActivity($data);
+
+      //   if (empty($updatedActivity)) {
+      //         $errors = $this->activityDAO->validateActivity($data);
+      //         $this->set('errors', $errors);
+      //       } else {
+      //         foreach ($selectedFocuses as $focusId) {
+      //           $data['activity_id'] = $updatedActivity['activity_id'];
+      //           $data['focus_id'] = $focusId;
+      //           $this->activityDAO->updateFocus($data);
+      //         }
+      //         foreach ($selectedFriends as $firstname) {
+      //           $data['activity_id'] = $updatedActivity['activity_id'];
+      //           $data['firstname'] = $firstname;
+      //           $this->activityDAO->updateFriend($data);
+      //         }
+      //         header('Location:index.php?page=detail&id=' . $updatedActivity['activity_id']);
+      //         exit();
+      //       }
+      //     }
+      // }
+
 
     $this->set('title', 'Add activity');
     $this->set('types', $types);
