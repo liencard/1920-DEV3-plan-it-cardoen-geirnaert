@@ -75,7 +75,6 @@ class ActivitiesController extends Controller {
 
       if (isset($_POST['selectType'])){
         $type = $_POST['type'];
-        //var_dump($type);
         $sports = $this->activityDAO->selectSportsByTypeId($type);
         $this->set('sports', $sports);
       }
@@ -89,7 +88,7 @@ class ActivitiesController extends Controller {
           'sport_id' => $_POST['sport'],
           'date' => $date,
           'starthour' => $_POST['starthour'],
-          'endhour' => $this->getEndHour(),
+          'endhour' => $this->_getEndHour(),
           'location_id' => $_POST['location'],
           'intensity' => $_POST['intensity'],
           'timestamp' => date('Y-m-d H:i:s'),
@@ -127,7 +126,27 @@ class ActivitiesController extends Controller {
     $this->set('types', $types);
     $this->set('locations', $locations);
     $this->set('focuses', $focuses);
-    $this->set('days', $this->getDaysOfNextWeek());
+    $this->set('days', $this->_getDaysOfNextWeek());
+  }
+
+  public function edit() {
+    $types = $this->activityDAO->selectAllTypes();
+    $locations = $this->activityDAO->selectAllLocations();
+    $focuses = $this->activityDAO->selectAllFocuses();
+    $sports = $this->activityDAO->selectAllSports();
+
+    if(!empty($_GET['id'])){
+      $activity = $this->activityDAO->selectActivityById($_GET['id']);
+      $focuses = $this->activityDAO->selectFocusByActivityId($_GET['id']);
+      $friends = $this->activityDAO->selectFriendByActivityId($_GET['id']);
+    }
+
+    var_dump($activity);
+
+    $this->set('title', 'Add activity');
+    $this->set('types', $types);
+    $this->set('locations', $locations);
+    $this->set('focuses', $focuses);
   }
 
   private function _handleRemove() {
@@ -140,7 +159,7 @@ class ActivitiesController extends Controller {
     }
   }
 
-  public function getDaysOfNextWeek() {
+  private function _getDaysOfNextWeek() {
     $today = new DateTime();
     $dayOfTheWeek = date('w', strtotime($today->format('Y-m-d')));
     $days = array();
@@ -169,7 +188,7 @@ class ActivitiesController extends Controller {
     return $days;
   }
 
-  public function getEndHour() {
+  private function _getEndHour() {
     $duration = ($_POST['duration'] / 4) * 60 * 60;
     $endhour = strtotime($_POST['starthour']) + $duration;
     return date('H:i', $endhour);

@@ -1,0 +1,29 @@
+.btn {
+  background-color: inherit;
+  border: .2rem solid var(--purpleColor);
+  border-radius: var(--layoutBorderRadius);
+  cursor: pointer;
+  color: var(--purpleColor);
+  font-size: 1.6rem;
+  font-weight: var(--fontWeightSemiBold);
+  max-width: 30rem;
+  padding: 1rem 5rem;
+  text-decoration: none;
+
+  text-transform: uppercase;
+}
+
+.backbutton a {
+  text-decoration: none;
+  color: var(--purpleColor);
+  font-size: 1.4rem;
+  font-weight: var(--fontWeightLight);
+
+  &::before {
+    content: '';
+    background-repeat: no-repeat;
+    background-image: url(../assets/img/arrow-back.svg);
+    background-position: center;
+    padding-left: var(--smallMargin);
+  }
+}
