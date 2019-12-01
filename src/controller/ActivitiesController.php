@@ -72,12 +72,12 @@ class ActivitiesController extends Controller {
       if (isset($_POST['selectType'])){
         $type = $_POST['type'];
         $sports = $this->activityDAO->selectSportsByTypeId($type);
-        $this->_saveDataToSession();
+        $this->_saveDataToSession($_POST);
         $this->set('sports', $sports);
       }
 
       if (isset($_POST['addFriend'])){
-        $this->_saveDataToSession();
+        $this->_saveDataToSession($_POST);
 
         if (!empty($_POST['nameFriend'])) {
           $name = $_POST['nameFriend'];
@@ -86,7 +86,7 @@ class ActivitiesController extends Controller {
       }
 
       if (isset($_POST['removeFriend'])) {
-        $this->_saveDataToSession();
+        $this->_saveDataToSession($_POST);
         $this->_handleRemove();
         header('Location: index.php?page=add-activity');
       }
@@ -136,53 +136,72 @@ class ActivitiesController extends Controller {
   }
 
   public function edit() {
-    $types = $this->activityDAO->selectAllTypes();
-    $locations = $this->activityDAO->selectAllLocations();
-    $focuses = $this->activityDAO->selectAllFocuses();
-    $sports = $this->activityDAO->selectAllSports();
-
     if(!empty($_GET['id'])){
+      $types = $this->activityDAO->selectAllTypes();
+      $locations = $this->activityDAO->selectAllLocations();
+      $focuses = $this->activityDAO->selectAllFocuses();
+      // $sports = $this->activityDAO->selectAllSports();
+      $days = $this->_getDaysOfNextWeek();
+
       $activity = $this->activityDAO->selectActivityById($_GET['id']);
+      $sports = $this->activityDAO->selectSportsByTypeId($activity['type_id']);
       $focuses = $this->activityDAO->selectFocusByActivityId($_GET['id']);
       $friends = $this->activityDAO->selectFriendByActivityId($_GET['id']);
     }
 
+    // var_dump($activity);
+
+    $data = array(
+      'type' => $activity['type_id'],
+      'sport' => $activity['sport_id'],
+      'date' => $activity['date'],
+      'starthour' => $activity['starthour'],
+      // 'duration' => $_POST['location'],
+      'location' => $_POST['intensity'],
+      'intensity' => date('Y-m-d H:i:s'),
+    );
+
+    $this->_saveDataToSession($data);
+
+    // var_dump($_SESSION['newActivity']);
     $this->set('title', 'Add activity');
     $this->set('types', $types);
+    $this->set('sports', $sports);
+    $this->set('days', $days);
     $this->set('locations', $locations);
     $this->set('focuses', $focuses);
   }
 
-  private function _saveDataToSession() {
+  private function _saveDataToSession($data) {
     unset($_SESSION['newActivity']);
 
-    if (!empty($_POST['type'])) {
-      $_SESSION['newActivity']['type_id'] = $_POST['type'];
-      $_SESSION['newActivity']['sports'] = $this->activityDAO->selectSportsByTypeId($_POST['type']);
+    if (!empty($data['type'])) {
+      $_SESSION['newActivity']['type_id'] = $data['type'];
+      $_SESSION['newActivity']['sports'] = $this->activityDAO->selectSportsByTypeId($data['type']);
     }
 
-    if (!empty($_POST['sport'])) {
-      $_SESSION['newActivity']['sport_id'] = $_POST['sport'];
+    if (!empty($data['sport'])) {
+      $_SESSION['newActivity']['sport_id'] = $data['sport'];
     }
 
-    if (!empty($_POST['date'])) {
-      $_SESSION['newActivity']['date'] = $_POST['date'];
+    if (!empty($data['date'])) {
+      $_SESSION['newActivity']['date'] = $data['date'];
     }
 
-    if (!empty($_POST['starthour'])) {
-      $_SESSION['newActivity']['starthour'] = $_POST['starthour'];
+    if (!empty($data['starthour'])) {
+      $_SESSION['newActivity']['starthour'] = $data['starthour'];
     }
 
-    if (!empty($_POST['duration'])) {
-      $_SESSION['newActivity']['duration'] = $_POST['duration'];
+    if (!empty($data['duration'])) {
+      $_SESSION['newActivity']['duration'] = $data['duration'];
     }
 
-    if (!empty($_POST['location'])) {
-      $_SESSION['newActivity']['location_id'] = $_POST['location'];
+    if (!empty($data['location'])) {
+      $_SESSION['newActivity']['location_id'] = $data['location'];
     }
 
-    if (!empty($_POST['intensity'])) {
-      $_SESSION['newActivity']['intensity'] = $_POST['intensity'];
+    if (!empty($data['intensity'])) {
+      $_SESSION['newActivity']['intensity'] = $data['intensity'];
     }
   }
 
