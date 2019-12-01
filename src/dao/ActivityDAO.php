@@ -5,7 +5,7 @@ require_once( __DIR__ . '/DAO.php');
 class ActivityDAO extends DAO {
 
   public function selectAllActivities() {
-    $sql = "SELECT `activities`.`id` AS `activity_id`, `sports`.`sport`, `activities`.`date`, `activities`.`starthour`, `activities`.`endhour`, `activities`.`intensity`, `locations`.`location`, `sports`.`icon` AS `sport_icon`, `locations`.`icon` AS `location_icon`
+    $sql = "SELECT `activities`.`id` AS `activity_id`, `sports`.`sport`, `activities`.`date`, `activities`.`starthour`, `activities`.`endhour`, `activities`.`intensity`, `locations`.`id`, `locations`.`location`, `sports`.`icon` AS `sport_icon`, `locations`.`icon` AS `location_icon`
     FROM `activities`
     INNER JOIN `sports` ON `activities`.`sport_id` = `sports`.`id`
     INNER JOIN `locations` ON `activities`.`location_id` = `locations`.`id`

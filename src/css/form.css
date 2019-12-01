@@ -1,12 +1,29 @@
-.form {
+.addactivity {
   margin: var(--mediumMargin) var(--smallMargin);
 }
 
-.form__title {
+.addactivity__title {
   color: var(--darkPurpleColor);
   font-size: 2.4rem;
   font-weight: var(--fontWeightSemiBold);
   margin-top: var(--smallMargin);
+}
+
+.addactivity__form {
+  margin-top: 5rem;
+}
+
+.form__item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--mediumMargin);
+}
+
+.form__label {
+  color: var(--orangeColor);
+  font-weight: var(--fontWeightSemiBold);
+  padding-bottom: var(--smallMargin);
+  font-size: 1.6rem;
 }
 
 .form__errors {
@@ -17,177 +34,73 @@
   padding-left: 1rem;
 }
 
-.add-activity {
-  margin-top: 5rem;
-}
-
-.add-activity__form-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.add-activity__label {
-  color: var(--orangeColor);
-  font-weight: var(--fontWeightSemiBold);
-  padding-bottom: var(--smallMargin);
-  font-size: 1.6rem;
-}
-
-.add-activity__options-container {
+.form__item__options {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: var(--mediumMargin);
 }
 
-.add-activity__form-item__date .add-activity__options-container {
-  justify-content: center;
-}
-
-.add-activity__form-item__location .add-activity__options-container {
-  flex-wrap: nowrap;
-  overflow-x: scroll;
-}
-
-[type=radio], [type=checkbox] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.add-activity__option {
+.options__item {
   margin: 0 1rem 2rem 0;
 }
 
-.add-activity__option.add-activity__option--date {
-  margin: 0 .5rem 2rem 0;
-}
-
-.add-activity__option .add-activity__option__container {
+.options__item__wrapper {
   align-items: center;
-  text-align: center;
   background-color: var(--whiteColor);
   border-radius: var(--borderRadius);
   box-shadow: 0 .2rem 1rem var(--shadowColor);
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 1rem;
 }
 
-.add-activity__option .add-activity__option__container > p {
+.options__item__p {
   color: var(--purpleColor);
   font-size: 1.4rem;
   font-weight: var(--fontWeightSemiBold);
-  padding: 1rem .5rem;
+  padding: 2rem 0 1rem;
+  text-align: center;
   text-transform: uppercase;
 }
 
-.add-activity__option.add-activity__option--square .add-activity__option__container {
+/* type */
+.form__item--type .form__item__options {
+  justify-content: flex-start;
+}
+
+.form__item--type .options__item__wrapper {
   height: 13.5rem;
   width: 13.5rem;
 }
 
-.add-activity__option.add-activity__option--date .add-activity__option__container {
+/* sport */
+.form__item--sport .form__item__options {
+  justify-content: flex-start;
+}
+
+.form__item--sport .options__item__wrapper {
+  height: 13.5rem;
+  width: 13.5rem;
+}
+
+/* day */
+.form__item--date .form__item__options {
+  justify-content: center;
+}
+
+.form__item--date .options__item__wrapper {
   height: 10rem;
   width: 7rem;
 }
 
-.add-activity__option.add-activity__option--date .date--large {
+.options__item__p--largedate {
   font-size: 2.3rem;
   padding-bottom: 0;
 }
 
-.add-activity__option.add-activity__option--location .add-activity__option__container {
-  height: 13.5rem;
-  width: 8.5rem;
-  text-align: center;
-}
-
-.add-activity__option.add-activity__option--intensity {
-  background-position: top center;
-  background-repeat: no-repeat;
-  color: var(--lightPurpleColor);
-  font-weight: var(--fontWeightSemiBold);
-  padding-top: 6rem;
-  text-align: center;
-  width: 30%;
-}
-
-.add-activity__option--intensity--light .add-activity__option__container {
-  background-image: url(../assets/img/light-icon.svg);
-}
-
-.add-activity__option--intensity--medium {
-  background-image: url(../assets/img/medium-icon.svg);
-}
-
-.add-activity__option--intensity--hard {
-  background-image: url(../assets/img/hard-icon.svg);
-}
-
-.add-activity__option--intensity--light [type=radio]:checked {
-  background-image: url(../assets/img/light-icon-selected.svg);
-}
-
-.add-activity__option--intensity--medium [type=radio]:checked {
-  background-image: url(../assets/img/medium-icon-selected.svg);
-}
-
-.add-activity__option--intensity--hard [type=radio]:checked {
-  background-image: url(../assets/img/hard-icon-selected.svg);
-}
-
-.add-activity__option.add-activity__option--intensity .add-activity__option__container > p {
-  color: var(--lightPurpleColor);
-}
-
-.add-activity__option.add-activity__option--focus .add-activity__option__container {
-  height: 5rem;
-  max-width: 25rem;
-  width: 40vw;
-}
-
-.add-activity__option [type=radio]:checked ~ .add-activity__option__container {
-  background-color: var(--purpleColor);
-}
-
-.add-activity__option [type=radio]:checked ~ .add-activity__option__container > p {
-  color: white;
-}
-
-.add-activity__option [type=radio]:checked ~ .add-activity__option__container > svg path {
-  fill: white;
-}
-
-.add-activity__option [type=checkbox]:checked ~ .add-activity__option__container {
-  background-color: var(--purpleColor);
-}
-
-.add-activity__option [type=checkbox]:checked ~ .add-activity__option__container > p {
-  color: white;
-}
-
-.add-activity__option [type=checkbox]:checked ~ .add-activity__option__container > svg path {
-  fill: white;
-}
-
-.add-activity__option.add-activity__option--intensity [type=radio]:checked ~ .add-activity__option__container {
-  background-color: transparent;
-}
-
-.add-activity__option.add-activity__option--intensity [type=radio]:checked ~ .add-activity__option__container > p {
-  color: var(--purpleColor);
-}
-
-.add-activity__option.add-activity__option--intensity [type=radio]:checked ~ .add-activity__option__container > svg > path {
-  fill: var(--purpleColor);
-}
-
-.selected {
-  fill: pink;
-}
-
+/* starthour */
 .input-time {
   border: none;
   color: var(--purpleColor);
@@ -221,6 +134,19 @@
   }
 }
 
+/* location */
+.form__item--location .form__item__options {
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+}
+
+.form__item--location .options__item__wrapper {
+  height: 16.5rem;
+  width: 13.5rem;
+  text-align: center;
+}
+
+/* friends */
 .friends__bubbles__wrapper {
   display: flex;
   align-items: center;
@@ -271,31 +197,83 @@
   margin-left: 1rem;
 }
 
+/* intensity */
+.form__item--intensity .form__item__options {
+  align-items: flex-end;
+}
+
+.form__item--intensity .options__item__wrapper {
+  color: var(--lightPurpleColor);
+  background-color: inherit;
+  border: none;
+  box-shadow: none;
+  font-weight: var(--fontWeightSemiBold);
+  padding-top: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.form__item--intensity .options__item__p {
+  color: var(--lightPurpleColor);
+}
+
+/* focus */
+.form__item--focus .options__item__wrapper {
+  height: 5rem;
+  max-width: 25rem;
+  width: 40vw;
+}
+
+.form__item--focus .options__item__p {
+  padding: 2rem 0;
+}
+
+/* selected value */
+.options__item__input:checked ~ .options__item__wrapper {
+  background-color: var(--purpleColor);
+}
+
+.options__item__input:checked ~ .options__item__wrapper > .options__item__p {
+  color: var(--whiteColor);
+}
+
+.options__item__input:checked ~ .options__item__wrapper > svg path {
+  fill: var(--whiteColor);
+}
+
+.form__item--intensity .options__item__input:checked ~ .options__item__wrapper {
+  background-color: inherit;
+}
+
+.form__item--intensity .options__item__input:checked ~ .options__item__wrapper > .options__item__p {
+  color: var(--purpleColor);
+}
+
+.form__item--intensity .options__item__input:checked ~ .options__item__wrapper > svg path {
+  fill: var(--purpleColor);
+}
+
 @media screen and (min-width: 650px) {
 
-  .form {
+  .addactivity {
     width: 35rem;
     margin: var(--mediumMargin) auto;
   }
-
-  /* .form__title {
-    margin-top: 10rem;
-  } */
 }
 
 @media screen and (min-width: 750px) {
 
-  .form {
+  .addactivity {
     width: 60rem;
     margin: var(--mediumMargin) auto;
     margin-bottom: 5rem;
   }
 
-  .add-activity__options-container {
+  .form__item__wrapper {
     justify-content: flex-start;
   }
 
-  .add-activity__form-item__date .add-activity__options-container {
+  .add-activity__form-item__date .form__item__wrapper {
     justify-content: flex-start;
   }
 

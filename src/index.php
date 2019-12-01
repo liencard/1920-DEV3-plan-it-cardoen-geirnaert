@@ -20,6 +20,10 @@ $routes = array(
     'controller' => 'Activities',
     'action' => 'add'
   ),
+  'edit-activity' => array(
+    'controller' => 'Activities',
+    'action' => 'edit'
+  ),
   'detail' => array(
     'controller' => 'Activities',
     'action' => 'detail'

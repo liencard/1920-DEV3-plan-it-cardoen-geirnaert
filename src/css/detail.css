@@ -2,21 +2,6 @@
   margin: var(--mediumMargin) var(--smallMargin);
 }
 
-.detail__back a {
-  text-decoration: none;
-  color: var(--purpleColor);
-  font-size: 1.4rem;
-  font-weight: var(--fontWeightLight);
-
-  &::before {
-    content: '';
-    background-repeat: no-repeat;
-    background-image: url(../assets/img/arrow-back.svg);
-    background-position: center;
-    padding-left: var(--smallMargin);
-  }
-}
-
 .activity__details {
   margin-top: var(--smallMargin);
   width: 100%;
@@ -124,7 +109,6 @@
 .intensity__wrapper--hard {
   background-image: url(../assets/img/hard-icon-selected.svg);
 }
-
 
 .focus__wrapper {
   display: grid;

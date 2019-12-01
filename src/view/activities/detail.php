@@ -4,7 +4,7 @@
 
 <div class="detail__wrapper">
 
-  <div class="detail__back">
+  <div class="backbutton">
     <a class="" href="index.php">Back to overview</a>
   </div>
 
@@ -57,7 +57,7 @@
     </section>
 
     <div class="details__buttons">
-      <a class="btn__detail btn__edit" href="index.php?page=add-activity">edit</a>
+      <a class="btn__detail btn__edit" href="index.php?page=edit-activity&id=<?php echo $activity['activity_id']; ?>">edit</a>
       <a class="btn__detail btn__delete" href="index.php?page=detail&id=<?php echo $activity['activity_id']; ?>&action=deleteActivity">delete</a>
     </div>
   </section>
