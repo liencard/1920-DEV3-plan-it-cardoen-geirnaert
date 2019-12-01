@@ -57,6 +57,8 @@ class ActivitiesController extends Controller {
   }
 
   public function add() {
+    $errors = array();
+
     $types = $this->activityDAO->selectAllTypes();
     $locations = $this->activityDAO->selectAllLocations();
     $focuses = $this->activityDAO->selectAllFocuses();
@@ -70,25 +72,14 @@ class ActivitiesController extends Controller {
     if (!empty($_POST['action']) && $_POST['action'] == 'newActivity'){
 
       if (isset($_POST['selectType'])){
-        // if(!empty($_POST['type'])){
-        //   $type = $_POST['type'];
-        //   $sports = $this->activityDAO->selectSportsByTypeId($type);
-        //   $this->set('sports', $sports);
-        // } else {
-        //   $data = array(
-        //   'type_id' => $_POST
-        //   );
-        //   $errors = $this->activityDAO->validateActivity($data);
-        //   $this->set('errors', $errors);
-        // }
-        //$type = $_POST['type'];
-        //var_dump($type);
-        //$sports = $this->activityDAO->selectSportsByTypeId($type);
-        //$this->set('sports', $sports);
-        $type = $_POST['type'];
-        $sports = $this->activityDAO->selectSportsByTypeId($type);
-        $this->_saveDataToSession($_POST);
-        $this->set('sports', $sports);
+        if (!empty($_POST['type'])){
+          $type = $_POST['type'];
+          $sports = $this->activityDAO->selectSportsByTypeId($type);
+          $this->set('sports', $sports);
+          $this->_saveDataToSession($_POST);
+        } else {
+          $errors['type'] = "Please select a type";
+        }
       }
 
       if (isset($_POST['addFriend'])){
@@ -148,6 +139,7 @@ class ActivitiesController extends Controller {
     $this->set('locations', $locations);
     $this->set('focuses', $focuses);
     $this->set('days', $this->_getDaysOfNextWeek());
+    $this->set('errors', $errors);
   }
 
   public function edit() {
@@ -164,6 +156,7 @@ class ActivitiesController extends Controller {
       $friends = $this->activityDAO->selectFriendByActivityId($_GET['id']);
     }
 
+<<<<<<< HEAD
     //var_dump($activity);
 
         $data = array(
@@ -203,8 +196,21 @@ class ActivitiesController extends Controller {
       //     }
       // }
 
+=======
 
-    // var_dump($_SESSION['newActivity']);
+    $data = array(
+      'type' => $activity['type_id'],
+      'sport' => $activity['sport_id'],
+      'date' => $activity['date'],
+      'starthour' => $activity['starthour'],
+      // 'duration' => $_POST['location'],
+      // 'location' => $_POST['intensity'],
+      // 'intensity' => date('Y-m-d H:i:s'),
+    );
+
+    $this->_saveDataToSession($data);
+>>>>>>> 4b009257b568613238f62c9b46e8abe1ae0aa7e5
+
     $this->set('title', 'Add activity');
     $this->set('types', $types);
     $this->set('sports', $sports);

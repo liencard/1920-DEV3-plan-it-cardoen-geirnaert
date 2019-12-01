@@ -32,7 +32,7 @@
           </label>
         <?php endforeach; ?>
       </div>
-      <button type="submit" class="btn" name="selectType">Select sport</button>
+      <button type="submit" class="btn btn__type" name="selectType">Select sport</button>
     </section>
 
     <?php if (!empty($sports) || !empty($_SESSION['newActivity']['sport_id'])): ?>

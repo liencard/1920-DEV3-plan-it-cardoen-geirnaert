@@ -10,7 +10,7 @@
   </head>
   <body>
 
-    <!-- <div class="header__wrapper">
+    <div class="header__wrapper">
       <header class="header">
           <h1 class="header__title"> <span class="header__title--small">Hello,</span> <br> Lien</h1>
       </header>
@@ -47,7 +47,7 @@
           </span>
         <div>
       </section>
-    </div> -->
+    </div>
 
     <main class="layout">
       <?php

@@ -1,5 +1,6 @@
 require('./style.css');
 require('./js/validate.js');
+require('./js/activities.js');
 
 {
   const showSliderValue = () => {
@@ -9,10 +10,6 @@ require('./js/validate.js');
 
     $rangeSlider.oninput = function () {
       $rangeBullet.innerHTML = this.value / 4;
-
-      const bulletPosition = (this.value / $rangeSlider.max);
-      $rangeBullet.style.left = `${bulletPosition * 57  }rem`;
-      console.log(bulletPosition);
     };
 
   };
@@ -26,6 +23,8 @@ require('./js/validate.js');
   // };
 
   const init = () => {
+    document.documentElement.classList.add('has-js');
+
     const $rangeSlider = document.querySelector('.ds-range');
     if ($rangeSlider) {
       $rangeSlider.addEventListener('input', showSliderValue());
