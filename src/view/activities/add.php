@@ -14,7 +14,7 @@
       <div class="add-activity__options-container">
         <?php foreach ($types as $type): ?>
           <label class="add-activity__option add-activity__option--square">
-            <input type="radio" name="type" value="<?php echo $type['id'] ?>">
+            <input type="radio" name="type" required class="input" value="<?php echo $type['id'] ?>">
 
             <!-- NOG BEKIJKEN -->
             <div class="add-activity__option__container">
@@ -34,7 +34,7 @@
         <div class="add-activity__options-container">
           <?php foreach ($sports as $sport): ?>
             <label class="add-activity__option add-activity__option--square">
-              <input type="radio" name="sport" value="<?php echo $sport['id']; ?>">
+              <input type="radio" name="sport" required value="<?php echo $sport['id']; ?>">
               <div class="add-activity__option__container">
                 <?php echo $sport['icon']; ?>
                 <p><?php echo $sport['sport']; ?></p>
@@ -50,7 +50,7 @@
         <div class="add-activity__options-container">
           <?php foreach ($days as $day): ?>
             <label class="add-activity__option add-activity__option--date">
-              <input type="radio" name="day" value="<?php echo $day; ?>">
+              <input type="radio" name="day" required value="<?php echo $day; ?>">
               <div class="add-activity__option__container">
                 <p class="date--large"><?php echo date("j", $day); ?></>
                 <p><?php echo date("D", $day)?></p>

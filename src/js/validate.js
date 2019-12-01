@@ -1,7 +1,6 @@
 {
   const handleSubmitForm = e => {
     const $form = e.currentTarget;
-    console.log(`testttt`);
 
     if (!$form.checkValidity()) {
       e.preventDefault();
@@ -9,7 +8,7 @@
       const fields = $form.querySelectorAll(`.input`);
       fields.forEach(showValidationInfo);
 
-      // $form.querySelector(`.form__errors`).innerHTML = `Some errors occured`;
+      //$form.querySelectorAll(`.form__errors`).innerHTML = `Some errors occured`;
     } else {
       console.log(`Form is valid => submit form`);
     }
@@ -17,6 +16,7 @@
 
   const showValidationInfo = $field => {
     let message;
+    console.log($field);
     if ($field.validity.valueMissing) {
       message = `Veld is verplicht`;
     }
@@ -38,6 +38,10 @@
     if ($field.validity.tooLong) {
       const max = $field.getAttribute(`maxlength`);
       message = `Te lang, maximum lengte is ${max}`;
+    }
+    if ($field) {
+
+      console.log('ccc');
     }
     if (message) {
       $field.parentElement.querySelector(`.form__errors`).textContent = message;
@@ -67,15 +71,15 @@
   };
 
   const init = () => {
-    const $form = document.querySelector(`.add-activity`);
+    const $form = document.querySelector(`form`);
     $form.noValidate = true;
     $form.addEventListener(`submit`, handleSubmitForm);
 
-    console.log(`test`);
+    console.log(`testttt`);
 
-    // const fields = $form.querySelectorAll(`.input`);
-    // addValidationListeners(fields);
-  }
+    const fields = $form.querySelectorAll(`.input`);
+    addValidationListeners(fields);
+  };
 
   init();
 }
