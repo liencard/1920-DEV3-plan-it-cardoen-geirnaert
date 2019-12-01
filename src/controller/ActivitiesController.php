@@ -156,7 +156,6 @@ class ActivitiesController extends Controller {
       $friends = $this->activityDAO->selectFriendByActivityId($_GET['id']);
     }
 
-<<<<<<< HEAD
     //var_dump($activity);
 
         $data = array(
@@ -196,20 +195,6 @@ class ActivitiesController extends Controller {
       //     }
       // }
 
-=======
-
-    $data = array(
-      'type' => $activity['type_id'],
-      'sport' => $activity['sport_id'],
-      'date' => $activity['date'],
-      'starthour' => $activity['starthour'],
-      // 'duration' => $_POST['location'],
-      // 'location' => $_POST['intensity'],
-      // 'intensity' => date('Y-m-d H:i:s'),
-    );
-
-    $this->_saveDataToSession($data);
->>>>>>> 4b009257b568613238f62c9b46e8abe1ae0aa7e5
 
     $this->set('title', 'Add activity');
     $this->set('types', $types);

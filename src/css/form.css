@@ -196,6 +196,7 @@
   color: var(--purpleColor);
   padding: .2rem 2rem;
   font-size: 1.3rem;
+  height: 3rem;
 }
 
 .delete__bubble {
@@ -272,6 +273,10 @@
     width: 35rem;
     margin: var(--mediumMargin) auto;
   }
+
+  .btn__addfriend {
+    padding: .2rem 2rem;
+  }
 }
 
 @media screen and (min-width: 750px) {
@@ -290,11 +295,19 @@
     justify-content: flex-start;
   }
 
+  .btn__addfriend {
+    padding: .2rem 2rem;
+  }
+
 }
 
 @media screen and (min-width: 1000px) {
 
   .addactivity {
     width: 60rem;
+  }
+
+  .btn__addfriend {
+    padding: .2rem 2rem;
   }
 }
