@@ -86,14 +86,6 @@ class ActivityDAO extends DAO {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  // public function selectAllSportsByType($type) {
-  //   $sql = "SELECT * FROM Sports WHERE type = :type";
-  //   $stmt = $this->pdo->prepare($sql);
-  //   $stmt->bindValue(':type', $type);
-  //   $stmt->execute();
-  //   return $stmt->fetchAll(PDO::FETCH_ASSOC);
-  // }
-
   public function insertActivity($data){
     $errors = $this->validateActivity($data);
     if (empty($errors)) {
@@ -132,6 +124,72 @@ class ActivityDAO extends DAO {
       return $this->pdo->lastInsertId();
     }
   }
+
+  public function updateActivity($data) {
+    $errors = $this->validateActivity($data);
+    if (empty($errors)) {
+      $sql = "UPDATE `activities` SET
+        `sport_id` = :sport_id,
+        `date` = :date,
+        `starthour` = :starthour,
+        `endhour` = :endhour,
+        `location_id` = :location_id,
+        `intensity` = :intensity,
+        `timestamp` = :timestamp
+        WHERE `id` = :id";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindValue(':sport_id', $data['sport_id']);
+      $stmt->bindValue(':date', $data['date']);
+      $stmt->bindValue(':starthour', $data['starthour']);
+      $stmt->bindValue(':endhour', $data['endhour']);
+      $stmt->bindValue(':location_id', $data['location_id']);
+      $stmt->bindValue(':intensity', $data['intensity']);
+      $stmt->bindValue(':timestamp', $data['timestamp']);
+      $stmt->bindValue(':id', $data['id']);
+      if ($stmt->execute()) {
+        return $this->selectActivityById($data['id']);
+      }
+    }
+    return false;
+  }
+
+  public function updateFocus($data) {
+    $errors = $this->validateActivity($data);
+    if (empty($errors)) {
+      $sql = "UPDATE `activities_have_focuses` SET
+        `activity_id` = :activity_id,
+        `focus_id` = :focus_id
+        WHERE `id` = :id";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindValue(':activity_id', $data['activity_id']);
+      $stmt->bindValue(':focus_id', $data['focus_id']);
+      $stmt->bindValue(':id', $data['id']);
+      if ($stmt->execute()) {
+        return $this->selectActivityById($data['id']);
+      }
+    }
+    return false;
+  }
+
+  public function updateFriends($data) {
+    $errors = $this->validateActivity($data);
+    if (empty($errors)) {
+      $sql = "UPDATE `friends` SET
+        `firstname` = :firstname,
+        `activity_id` = :activity_id
+        WHERE `id` = :id";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindValue(':firstname', $data['firstname']);
+      $stmt->bindValue(':activity_id', $data['activity_id']);
+      $stmt->bindValue(':id', $data['id']);
+      if ($stmt->execute()) {
+        return $this->selectActivityById($data['id']);
+      }
+    }
+    return false;
+  }
+
+
   public function getLastInsertedActivityId() {
     $sql = "SELECT `id`FROM `activities` ORDER BY `timestamp` DESC LIMIT 1";
     $stmt = $this->pdo->prepare($sql);
