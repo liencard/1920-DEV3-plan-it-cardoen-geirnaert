@@ -8,6 +8,7 @@ if (file_exists("../.env")) {
   $variables = parse_ini_file("../.env", true);
   foreach ($variables as $key => $value) {
     putenv("$key=$value");
+    
   }
 }
 
